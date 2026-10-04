@@ -77,12 +77,11 @@
             text-align: center;
             z-index: 2;
             padding: 0 20px;
-            width: 100%;
         }
 
         .intro-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(28px, 6vw, 52px);
+            font-size: clamp(32px, 6vw, 52px);
             font-weight: 900;
             color: #fff;
             letter-spacing: 4px;
@@ -99,9 +98,9 @@
 
         .intro-subtitle {
             font-family: 'Orbitron', sans-serif;
-            font-size: 14px;
+            font-size: 16px;
             color: var(--primary-red);
-            letter-spacing: 6px;
+            letter-spacing: 8px;
             margin-bottom: 40px;
             text-transform: uppercase;
         }
@@ -111,8 +110,8 @@
             border: 2px solid var(--primary-red);
             color: #fff;
             font-family: 'Orbitron', sans-serif;
-            font-size: 16px;
-            padding: 14px 35px;
+            font-size: 18px;
+            padding: 16px 45px;
             letter-spacing: 3px;
             cursor: pointer;
             transition: 0.3s;
@@ -149,7 +148,7 @@
 
         .splash-logo-img {
             max-width: 800px;
-            width: 85%;
+            width: 90%;
             height: auto;
             filter: drop-shadow(0 0 50px var(--primary-red)) drop-shadow(0 0 100px #ff0033);
             transform: scale(0.1) rotate(-10deg);
@@ -165,13 +164,13 @@
 
         @keyframes cyberPulse {
             0% { filter: drop-shadow(0 0 40px var(--primary-red)) drop-shadow(0 0 80px #ff0033); transform: scale(1); }
-            100% { filter: drop-shadow(0 0 70px var(--primary-red)) drop-shadow(0 0 120px var(--primary-red)); transform: scale(1.03); }
+            100% { filter: drop-shadow(0 0 70px var(--primary-red)) drop-shadow(0 0 120px #ff1e38); transform: scale(1.03); }
         }
 
         header {
             background: rgba(13, 3, 3, 0.95);
             border-bottom: 2px solid var(--primary-red);
-            padding: 15px 20px;
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -180,37 +179,41 @@
             z-index: 1000;
             backdrop-filter: blur(15px);
             box-shadow: 0 5px 20px rgba(255, 30, 56, 0.2);
-            flex-wrap: wrap;
-            gap: 15px;
             width: 100%;
         }
 
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
         .logo-img {
-            height: 38px;
+            height: 45px;
             width: auto;
             object-fit: contain;
             filter: drop-shadow(0 0 10px rgba(255, 30, 56, 0.6));
         }
 
         .logo-text p {
-            font-size: 11px;
+            font-size: 13px;
             color: var(--primary-red);
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
         }
 
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         nav ul {
             display: flex;
             list-style: none;
-            gap: 8px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
@@ -218,9 +221,9 @@
             color: var(--text-muted);
             text-decoration: none;
             font-family: 'Orbitron', sans-serif;
-            font-size: 11px;
-            letter-spacing: 0.5px;
-            padding: 6px 10px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            padding: 8px 12px;
             border: 1px solid transparent;
             transition: 0.3s;
         }
@@ -232,11 +235,31 @@
             box-shadow: 0 0 12px rgba(255, 30, 56, 0.5);
         }
 
+        /* BGM Volume Control Widget */
+        .volume-control-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 30, 56, 0.1);
+            border: 1px solid var(--border-red);
+            padding: 6px 12px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            color: #fff;
+            box-shadow: 0 0 10px rgba(255, 30, 56, 0.2);
+        }
+
+        .volume-control-box input[type="range"] {
+            accent-color: var(--primary-red);
+            cursor: pointer;
+            width: 80px;
+        }
+
         .container {
-            width: 100%;
             max-width: 1350px;
             margin: 0 auto;
-            padding: 40px 15px;
+            padding: 50px 20px;
+            width: 100%;
             box-sizing: border-box;
         }
 
@@ -244,7 +267,6 @@
             display: none;
             animation: fadeIn 0.5s ease-in-out forwards;
             width: 100%;
-            box-sizing: border-box;
         }
 
         .page-section.active {
@@ -258,47 +280,41 @@
 
         .section-header {
             border-left: 6px solid var(--primary-red);
-            padding-left: 15px;
-            margin-bottom: 30px;
-            width: 100%;
-            box-sizing: border-box;
+            padding-left: 20px;
+            margin-bottom: 40px;
         }
 
         .section-header h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(22px, 4vw, 36px);
+            font-size: 36px;
             color: #fff;
             letter-spacing: 2px;
             text-transform: uppercase;
-            word-break: break-word;
         }
 
         .section-header p {
             color: var(--text-muted);
-            font-size: 15px;
-            margin-top: 6px;
+            font-size: 16px;
+            margin-top: 8px;
         }
 
         /* --- ORG CHART STYLES --- */
         .org-container {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 35px;
             align-items: center;
             width: 100%;
-            padding: 10px 0;
-            box-sizing: border-box;
+            padding: 20px 0;
         }
 
         .org-level-box {
             background: var(--bg-panel);
             border: 1px solid var(--border-red);
             width: 100%;
-            max-width: 100%;
-            padding: 20px;
+            padding: 25px;
             position: relative;
             box-shadow: 0 0 20px rgba(255, 30, 56, 0.15);
-            box-sizing: border-box;
         }
 
         .org-level-box.top-mgmt { border-top: 4px solid #ff1e38; }
@@ -308,31 +324,29 @@
 
         .org-level-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 16px;
+            font-size: 18px;
             color: #fff;
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             background: rgba(255, 30, 56, 0.15);
-            padding: 8px;
+            padding: 10px;
             border: 1px solid var(--border-red);
         }
 
         .org-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            width: 100%;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
         }
 
         .org-node {
             background: var(--bg-card);
             border: 1px solid var(--border-red);
-            padding: 15px;
+            padding: 18px;
             text-align: center;
             transition: 0.3s;
-            box-sizing: border-box;
         }
 
         .org-node:hover {
@@ -343,35 +357,32 @@
 
         .org-node h5 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 14px;
+            font-size: 15px;
             color: #fff;
             margin-bottom: 5px;
         }
 
         .org-node span {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--primary-red);
         }
 
         /* Hero / Home */
         .hero-banner {
             text-align: center;
-            padding: 60px 15px;
+            padding: 80px 20px;
             background: radial-gradient(circle at center, rgba(255, 30, 56, 0.15) 0%, transparent 70%);
             border: 1px solid var(--border-red);
             position: relative;
-            margin-bottom: 40px;
-            width: 100%;
-            box-sizing: border-box;
+            margin-bottom: 50px;
         }
 
         .hero-banner h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(26px, 5vw, 52px);
+            font-size: 52px;
             color: #fff;
-            margin-bottom: 15px;
-            letter-spacing: 2px;
-            word-break: break-word;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
         }
 
         .hero-banner h1 span {
@@ -380,72 +391,63 @@
         }
 
         .hero-banner p {
-            font-size: 16px;
+            font-size: 18px;
             color: var(--text-muted);
             max-width: 900px;
-            margin: 0 auto 25px;
+            margin: 0 auto 30px;
             line-height: 1.7;
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-            width: 100%;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
 
         .stat-card {
             background: var(--bg-panel);
             border: 1px solid var(--border-red);
-            padding: 25px;
+            padding: 30px;
             text-align: center;
             position: relative;
-            box-sizing: border-box;
         }
 
         .stat-card h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 32px;
+            font-size: 38px;
             color: var(--primary-red);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             text-shadow: 0 0 10px rgba(255,30,56,0.4);
         }
 
         .stat-card p {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--text-muted);
         }
 
         /* Cards Grid */
         .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            width: 100%;
+            grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+            gap: 30px;
         }
 
         .grid-3 {
             display: grid;
-            grid-template-columns: 100%;
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
             width: 100%;
-            max-width: 100%;
-            box-sizing: border-box;
         }
 
         .cyber-card {
             background: var(--bg-card);
             border: 1px solid var(--border-red);
-            padding: 25px;
+            padding: 35px;
             position: relative;
             transition: 0.3s;
             cursor: pointer;
-            width: 100%;
-            max-width: 100%;
             box-sizing: border-box;
-            word-break: break-word;
-            overflow-wrap: break-word;
         }
 
         .cyber-card:hover {
@@ -456,62 +458,55 @@
 
         .cyber-card h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(16px, 3.5vw, 22px);
+            font-size: 22px;
             color: #fff;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            word-break: break-word;
         }
 
         .cyber-card p {
-            font-size: 15px;
+            font-size: 16px;
             color: var(--text-muted);
-            line-height: 1.7;
-            margin-bottom: 15px;
+            line-height: 1.8;
+            margin-bottom: 18px;
         }
 
         .tag {
             background: rgba(255, 30, 56, 0.2);
             color: var(--primary-red);
             font-family: 'Orbitron', sans-serif;
-            font-size: 11px;
-            padding: 4px 10px;
+            font-size: 12px;
+            padding: 5px 12px;
             border: 1px solid var(--primary-red);
         }
 
         .list-styled {
             list-style: none;
-            margin-top: 15px;
+            margin-top: 18px;
             border-top: 1px dashed rgba(255, 30, 56, 0.4);
-            padding-top: 15px;
-            width: 100%;
-            box-sizing: border-box;
+            padding-top: 18px;
         }
 
         .list-styled li {
-            font-size: 14px;
+            font-size: 15px;
             color: #ffb3bc;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: flex;
             align-items: flex-start;
-            gap: 8px;
+            gap: 10px;
             line-height: 1.6;
-            word-break: break-word;
         }
 
         .list-styled li::before {
             content: "■";
             color: var(--primary-red);
-            font-size: 10px;
-            margin-top: 3px;
-            flex-shrink: 0;
+            font-size: 12px;
+            margin-top: 2px;
         }
 
-        /* --- 3D HOLOGRAPHIC MODAL POPUP --- */
+        /* --- PRODUCT MODAL --- */
         #holo-modal {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -521,8 +516,7 @@
             justify-content: center;
             align-items: center;
             backdrop-filter: blur(8px);
-            padding: 15px;
-            box-sizing: border-box;
+            padding: 20px;
         }
 
         #holo-modal.active {
@@ -530,34 +524,28 @@
             animation: modalFadeIn 0.3s ease forwards;
         }
 
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
         .holo-box {
             background: linear-gradient(135deg, #180305, #080101);
             border: 2px solid var(--primary-red);
             width: 100%;
-            max-width: 750px;
-            padding: 25px;
+            max-width: 800px;
+            padding: 40px;
             position: relative;
             box-shadow: 0 0 50px rgba(255, 30, 56, 0.6), inset 0 0 25px rgba(255, 30, 56, 0.3);
-            border-left: 8px solid var(--primary-red);
+            border-left: 10px solid var(--primary-red);
             max-height: 90vh;
             overflow-y: auto;
-            box-sizing: border-box;
         }
 
         .holo-close {
             position: absolute;
-            top: 15px; right: 15px;
+            top: 20px; right: 25px;
             background: transparent;
             border: 1px solid var(--primary-red);
             color: var(--primary-red);
             font-family: 'Orbitron', sans-serif;
-            font-size: 14px;
-            padding: 4px 10px;
+            font-size: 16px;
+            padding: 5px 12px;
             cursor: pointer;
             transition: 0.3s;
         }
@@ -570,26 +558,24 @@
 
         .holo-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 18px;
+            font-size: 26px;
             color: #fff;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            padding-right: 60px;
-            word-break: break-word;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            padding-right: 50px;
         }
 
         .holo-img-container {
             width: 100%;
-            height: 220px;
+            height: 250px;
             background: #020000;
             border: 1px dashed var(--primary-red);
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             position: relative;
             overflow: hidden;
-            box-sizing: border-box;
         }
 
         .holo-img-container img {
@@ -606,32 +592,137 @@
         }
 
         .holo-desc {
-            font-size: 15px;
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* --- MANAGEMENT MODAL (ดีไซน์ 2 คอลัมน์ที่รองรับมือถือและ PC สมบูรณ์แบบ) --- */
+        #mgmt-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.88);
+            z-index: 20000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        #mgmt-modal.active {
+            display: flex;
+            animation: modalFadeIn 0.3s ease forwards;
+        }
+
+        .mgmt-box {
+            background: linear-gradient(135deg, #180305, #080101);
+            border: 2px solid var(--primary-red);
+            width: 100%;
+            max-width: 1100px;
+            height: 650px;
+            max-height: 92vh;
+            position: relative;
+            box-shadow: 0 0 60px rgba(255, 30, 56, 0.7), inset 0 0 30px rgba(255, 30, 56, 0.3);
+            display: grid;
+            grid-template-columns: 45% 55%;
+            overflow: hidden;
+            border-left: 12px solid var(--primary-red);
+            box-sizing: border-box;
+        }
+
+        .mgmt-left-img {
+            background: #020000;
+            border-right: 2px dashed rgba(255, 30, 56, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .mgmt-left-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: drop-shadow(0 0 20px rgba(255, 30, 56, 0.5));
+        }
+
+        .mgmt-right-content {
+            padding: 35px;
+            overflow-y: auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .mgmt-close {
+            position: absolute;
+            top: 20px; right: 25px;
+            background: transparent;
+            border: 1px solid var(--primary-red);
+            color: var(--primary-red);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            padding: 5px 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .mgmt-close:hover {
+            background: var(--primary-red);
+            color: #fff;
+            box-shadow: 0 0 15px var(--primary-red);
+        }
+
+        .mgmt-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 5px;
+            letter-spacing: 1.5px;
+            padding-right: 60px;
+        }
+
+        .mgmt-subtitle {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .mgmt-desc {
+            font-size: 14px;
             color: var(--text-muted);
             line-height: 1.7;
-            word-break: break-word;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         /* --- 3D HOLOGRAPHIC & POP-UP ANIMATIONS --- */
         .hologram-container {
             perspective: 1000px;
-            margin-bottom: 30px;
-            width: 100%;
-            box-sizing: border-box;
+            margin-bottom: 35px;
         }
 
         .hologram-card {
             background: linear-gradient(135deg, rgba(20, 5, 5, 0.95), rgba(40, 5, 10, 0.9));
             border: 2px solid var(--primary-red);
-            padding: 25px;
-            border-left: 6px solid var(--primary-red);
+            padding: 35px;
+            border-left: 8px solid var(--primary-red);
             box-shadow: 0 10px 30px rgba(255, 30, 56, 0.4), inset 0 0 20px rgba(255, 30, 56, 0.2);
-            transform: translateY(20px) rotateX(5deg);
+            transform: translateY(30px) rotateX(10deg);
             opacity: 0;
             transition: transform 0.8s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 0.8s ease;
-            width: 100%;
-            box-sizing: border-box;
-            word-break: break-word;
         }
 
         .page-section.active .hologram-card {
@@ -643,14 +734,12 @@
         .info-graphic-box {
             background: var(--bg-panel);
             border: 1px solid var(--primary-red);
-            padding: 25px;
+            padding: 30px;
             margin-top: 20px;
             box-shadow: 0 0 25px rgba(255, 30, 56, 0.3);
             transform: scale(0.95);
             opacity: 0;
             transition: transform 0.8s ease, opacity 0.8s ease;
-            width: 100%;
-            box-sizing: border-box;
         }
 
         .page-section.active .info-graphic-box {
@@ -661,37 +750,32 @@
         .info-graphic-box h4 {
             font-family: 'Orbitron', sans-serif;
             color: #fff;
-            font-size: 16px;
-            margin-bottom: 20px;
+            font-size: 18px;
+            margin-bottom: 25px;
             letter-spacing: 1px;
             border-bottom: 1px solid var(--border-red);
-            padding-bottom: 10px;
-            word-break: break-word;
+            padding-bottom: 12px;
         }
 
         .bar-item {
-            margin-bottom: 15px;
-            width: 100%;
+            margin-bottom: 18px;
         }
 
         .bar-label {
             display: flex;
             justify-content: space-between;
-            font-size: 13px;
+            font-size: 15px;
             color: var(--text-main);
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             font-family: 'Orbitron', sans-serif;
-            flex-wrap: wrap;
-            gap: 5px;
         }
 
         .bar-track {
             background: rgba(255, 255, 255, 0.05);
-            height: 12px;
+            height: 14px;
             border: 1px solid rgba(255, 30, 56, 0.4);
             position: relative;
             overflow: hidden;
-            width: 100%;
         }
 
         .bar-fill {
@@ -705,55 +789,51 @@
         /* Roadmap Timeline Cards */
         .roadmap-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 15px;
-            width: 100%;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
         }
 
         .roadmap-card {
             background: var(--bg-card);
             border: 1px solid var(--border-red);
-            padding: 20px;
-            border-left: 4px solid var(--primary-red);
+            padding: 25px;
+            border-left: 5px solid var(--primary-red);
             transition: 0.3s;
-            box-sizing: border-box;
-            word-break: break-word;
         }
 
         .roadmap-card:hover {
             border-color: #fff;
             box-shadow: 0 0 15px rgba(255, 30, 56, 0.5);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
         .roadmap-card h4 {
             font-family: 'Orbitron', sans-serif;
             color: #fff;
-            font-size: 16px;
-            margin-bottom: 10px;
+            font-size: 18px;
+            margin-bottom: 12px;
         }
 
         /* Tables for Financial & Budget */
         .table-responsive {
             width: 100%;
             overflow-x: auto;
-            box-sizing: border-box;
         }
 
         .cyber-table {
             width: 100%;
-            min-width: 550px;
+            min-width: 600px;
             border-collapse: collapse;
             background: var(--bg-card);
             border: 1px solid var(--border-red);
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .cyber-table th, .cyber-table td {
-            padding: 15px 18px;
+            padding: 18px 22px;
             text-align: left;
-            font-size: 14px;
+            font-size: 15px;
             border-bottom: 1px solid rgba(255, 30, 56, 0.25);
         }
 
@@ -761,7 +841,7 @@
             background: rgba(255, 30, 56, 0.2);
             font-family: 'Orbitron', sans-serif;
             color: #fff;
-            font-size: 15px;
+            font-size: 16px;
             letter-spacing: 1px;
         }
 
@@ -777,17 +857,60 @@
             background: var(--bg-panel);
             border-top: 1px solid var(--border-red);
             text-align: center;
-            padding: 30px 15px;
-            font-size: 13px;
+            padding: 35px;
+            font-size: 14px;
             color: var(--text-muted);
             font-family: 'Orbitron', sans-serif;
-            margin-top: 60px;
+            margin-top: 80px;
             width: 100%;
-            box-sizing: border-box;
         }
 
         footer span {
             color: var(--primary-red);
+        }
+
+        /* --- MEDIA QUERY สำหรับมือถือ (Responsive ป้องกัน UI พัง) --- */
+        @media screen and (max-width: 900px) {
+            .grid-3 {
+                grid-template-columns: 100% !important;
+            }
+            .grid-2 {
+                grid-template-columns: 100% !important;
+            }
+            .mgmt-box {
+                grid-template-columns: 100%;
+                height: 85vh;
+            }
+            .mgmt-left-img {
+                height: 180px;
+                border-right: none;
+                border-bottom: 2px dashed rgba(255, 30, 56, 0.4);
+            }
+            header {
+                padding: 10px 15px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            .nav-container {
+                width: 100%;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            nav ul {
+                gap: 6px;
+            }
+            nav a {
+                font-size: 10px;
+                padding: 5px 8px;
+            }
+            .volume-control-box {
+                padding: 4px 8px;
+                font-size: 11px;
+            }
+            .volume-control-box input[type="range"] {
+                width: 60px;
+            }
         }
     </style>
 </head>
@@ -806,13 +929,13 @@
         </div>
     </div>
 
-    <!-- 3D HOLOGRAPHIC PRODUCT MODAL -->
+    <!-- 3D HOLOGRAPHIC MODAL (สำหรับหน้าสินค้า) -->
     <div id="holo-modal">
         <div class="holo-box">
             <button class="holo-close" onclick="closeHoloModal()">[ CLOSE ]</button>
-            <div class="holo-title" id="holo-product-title">PRODUCT SPECIFICATION</div>
+            <div class="holo-title" id="holo-product-title">SPECIFICATION</div>
             <div class="holo-img-container">
-                <img id="holo-product-img" src="" alt="Hologram Product Preview">
+                <img id="holo-product-img" src="" alt="Hologram Preview">
             </div>
             <div class="holo-desc" id="holo-product-desc">
                 กำลังโหลดข้อมูลระบบโฮโลแกรม...
@@ -820,7 +943,24 @@
         </div>
     </div>
 
-    <!-- ไฟล์เสียง AI Welcome และ BGM (SONG.mp3 ในโฟลเดอร์ assets) -->
+    <!-- MANAGEMENT 2-COLUMN MODAL (ดีไซน์ใหม่: ซ้ายรูปใหญ่ - ขวาข้อมูลแน่น) -->
+    <div id="mgmt-modal">
+        <div class="mgmt-box">
+            <button class="mgmt-close" onclick="closeMgmtModal()">[ CLOSE ]</button>
+            <div class="mgmt-left-img">
+                <img id="mgmt-modal-img" src="" alt="Management Preview">
+            </div>
+            <div class="mgmt-right-content">
+                <div class="mgmt-title" id="mgmt-modal-title">TITLE</div>
+                <div class="mgmt-subtitle" id="mgmt-modal-subtitle">SUBTITLE</div>
+                <div class="mgmt-desc" id="mgmt-modal-desc">
+                    กำลังโหลดข้อมูล...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ไฟล์เสียง AI Welcome และ BGM -->
     <audio id="welcome-audio" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
     <audio id="bgm-audio" src="assets/SONG.mp3" preload="auto" loop></audio>
 
@@ -831,17 +971,25 @@
                 <p>Cybernetic Medical Systems</p>
             </div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#" onclick="switchTab('home')" class="nav-link active" id="link-home">หน้าหลัก</a></li>
-                <li><a href="#" onclick="switchTab('environment')" class="nav-link" id="link-environment">สภาพแวดล้อม</a></li>
-                <li><a href="#" onclick="switchTab('orgchart')" class="nav-link" id="link-orgchart">โครงสร้างองค์กร</a></li>
-                <li><a href="#" onclick="switchTab('customers')" class="nav-link" id="link-customers">กลุ่มลูกค้า</a></li>
-                <li><a href="#" onclick="switchTab('products')" class="nav-link" id="link-products">สินค้าและต้นทุน</a></li>
-                <li><a href="#" onclick="switchTab('management')" class="nav-link" id="link-management">ผู้บริหาร C-Level</a></li>
-                <li><a href="#" onclick="switchTab('budget')" class="nav-link" id="link-budget">งบ & แผน 2 ปี</a></li>
-            </ul>
-        </nav>
+        <div class="nav-container">
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="switchTab('home')" class="nav-link active" id="link-home">หน้าหลัก</a></li>
+                    <li><a href="#" onclick="switchTab('environment')" class="nav-link" id="link-environment">สภาพแวดล้อม</a></li>
+                    <li><a href="#" onclick="switchTab('orgchart')" class="nav-link" id="link-orgchart">โครงสร้างองค์กร</a></li>
+                    <li><a href="#" onclick="switchTab('customers')" class="nav-link" id="link-customers">กลุ่มลูกค้า</a></li>
+                    <li><a href="#" onclick="switchTab('products')" class="nav-link" id="link-products">สินค้าและต้นทุน</a></li>
+                    <li><a href="#" onclick="switchTab('management')" class="nav-link" id="link-management">ผู้บริหาร C-Level</a></li>
+                    <li><a href="#" onclick="switchTab('budget')" class="nav-link" id="link-budget">งบ & แผน 2 ปี</a></li>
+                </ul>
+            </nav>
+            <!-- วิดเจ็ตสไลเดอร์ปรับระดับเสียง BGM (0-100%) -->
+            <div class="volume-control-box">
+                <span>🔊 BGM</span>
+                <input type="range" id="bgm-volume-slider" min="0" max="100" value="10" oninput="changeBGMVolume(this.value)">
+                <span id="volume-percent">10%</span>
+            </div>
+        </div>
     </header>
 
     <div class="container">
@@ -1041,7 +1189,7 @@
                         <li>กลุ่มบุคคลที่ต้องการเพิ่มขีดความสามารถทางกายภาพ (Augmentation)</li>
                     </ul>
                 </div>
-                <div class="cyber-card" style="grid-column: span 1;">
+                <div class="cyber-card" style="grid-column: span 2;">
                     <h3>5. บริษัทประกันและกองทุนภาครัฐ</h3>
                     <p><strong>ผู้สนับสนุนค่าใช้จ่ายหลักของโปรเจกต์</strong></p>
                     <ul class="list-styled">
@@ -1096,38 +1244,58 @@
         <div id="management" class="page-section">
             <div class="section-header">
                 <h2>คณะผู้บริหารระดับสูง (C-Level Management Roles)</h2>
-                <p>หน้าที่เชิงลึกและความสำคัญของบอร์ดบริหาร ต่อความสำเร็จของโปรเจกต์อวัยวะเทียมไซเบอร์เนติกส์</p>
+                <p>คลิกที่การ์ดผู้บริหารแต่ละท่านเพื่อเปิดระบบแสดงข้อมูลแบบ 2 คอลัมน์ (ซ้ายรูปใหญ่ - ขวาข้อมูลแน่น)</p>
             </div>
 
             <div class="grid-3">
-                <div class="cyber-card" style="border-left: 6px solid var(--primary-red); cursor: default;">
-                    <h3>👑 ซีอีโอ (CEO) — ประธานเจ้าหน้าที่บริหาร (The Black Eagle)</h3>
-                    <p><strong>หน้าที่หลัก:</strong> ผู้กำหนดทิศทางและวิสัยทัศน์ของ TOP Corporation ตัดสินใจเรื่องผลิตภัณฑ์ ติดต่อรัฐบาล บริษัทประกันภัย โรงพยาบาล หาพาร์ทเนอร์ยุทธศาสตร์ อนุมัติงบโครงการ และควบคุมภาพรวมโครงการ 2 ปี</p>
-                    <p><strong>ความสำคัญต่อโปรเจกต์:</strong> ต้องตอบคำถามว่า *"เราจะสร้างดวงตาเทียมนี้เพื่อใคร และจะทำให้ผู้ป่วยเข้าถึงได้อย่างไร?"* รวมถึงการสร้างความร่วมมือกับภาครัฐและบริษัทประกัน เนื่องจากโมเดลธุรกิจเน้นตลาดสุขภาพ ภาครัฐ และประกันภัย</p>
+                <!-- CEO -->
+                <div class="cyber-card" style="border-left: 6px solid var(--primary-red);" onclick="openMgmtModal('CEO', '(Chief Executive Officer)', 'The Black Eagle', 'assets/ceo.png', '<strong>หน้าที่หลักระดับองค์กร:</strong><br>• กำหนดวิสัยทัศน์ ยุทธศาสตร์ และทิศทางธุรกิจระยะยาวของ TOP Corporation ตลอดแผนงาน 2 ปี<br>• เป็นตัวแทนองค์กรในการเจรจกับกระทรวงสาธารณสุข หน่วยงานรัฐ และเครือข่ายโรงพยาบาลชั้นนำ<br>• อนุมัติงบประมาณและดีลพาร์ทเนอร์เชิงยุทธศาสตร์กับบริษัทประกันสุขภาพเอกชน<br><br><strong>ความสำคัญและบทบาทต่อโปรเจกต์งาน:</strong><br>• <strong>ต่อโปรเจกต์ Top E36 32x (ลูกตาเทียม):</strong> เป็นผู้ผลักดันนโยบายการเข้าถึงเทคโนโลยีของผู้ป่วย ผ่านการเจรจาร่วมกับกองทุนสวัสดิการรัฐและบริษัทประกัน เพื่ออนุมัติวงเงินคุ้มครองค่ารักษาอวัยวะเทียมราคาสูง<br>• <strong>ต่อโปรเจกต์ Top Mantis Blade MT12 (แขนเทียม):</strong> เจรจาจัดซื้อเชิงยุทธศาสตร์ร่วมกับกระทรวงกลาโหมและกองทัพ สำหรับนำร่องช่วยเหลือทหารผ่านศึกและหน่วยรบพิเศษที่สูญเสียอวัยวะ')">
+                    <h3>👑 ซีอีโอ (CEO) <span class="tag">The Black Eagle</span></h3>
+                    <p><strong>ประธานเจ้าหน้าที่บริหาร</strong> ผู้กำหนดทิศทางและวิสัยทัศน์ขององค์กร</p>
+                    <ul class="list-styled">
+                        <li><strong>คลิกเพื่อเปิดโฮโลแกรมสเปก 3D</strong></li>
+                        <li>ดีลกับรัฐบาล & ประกันภัย | ดันโปรเจกต์เรือธง</li>
+                    </ul>
                 </div>
 
-                <div class="cyber-card" style="border-left: 6px solid var(--primary-red); cursor: default;">
-                    <h3>⚙️ ประธานเจ้าหน้าที่ฝ่ายปฏิบัติการ (COO)</h3>
-                    <p><strong>หน้าที่หลัก:</strong> แปลงแผนงานให้เกิดขึ้นจริง ควบคุมงานวิจัยและพัฒนา (R&D) ห้องทดลอง การผลิตต้นแบบ ห่วงโซ่อุปทาน การจัดซื้อ การควบคุมคุณภาพ ไทม์ไลน์ และประสานงานระหว่างทีมวิศวกรกับแพทย์</p>
-                    <p><strong>ความสำคัญต่อโปรเจกต์:</strong> เป็นหัวใจในการคุมไทม์ไลน์การพัฒนา เช่น เดือนที่ 1 ออกแบบ / เดือนที่ 3 สร้างต้นแบบ / เดือนที่ 12 ทำต้นแบบวิศวกรรม / ปีที่ 2 ทดสอบและขอรับรองมาตรฐาน</p>
+                <!-- COO -->
+                <div class="cyber-card" style="border-left: 6px solid var(--primary-red);" onclick="openMgmtModal('COO', '(Chief Operating Officer)', 'Chief Operations', 'assets/coo.gif', '<strong>หน้าที่หลักระดับองค์กร:</strong><br>• แปลงวิสัยทัศน์ของ CEO ให้เป็นแผนปฏิบัติการจริง ควบคุมงานวิจัยและพัฒนา (R&D Lab)<br>• ควบคุมกระบวนการผลิตต้นแบบ (Prototype) ห่วงโซ่อุปทาน (Supply Chain) และการควบคุมคุณภาพ (QC)<br>• บริหารจัดการไทม์ไลน์องค์กรตลอด 2 ปี และประสานงานอย่างไร้รอยต่อระหว่างทีมวิศวกรและแพทย์<br><br><strong>ความสำคัญและบทบาทต่อโปรเจกต์งาน:</strong><br>• <strong>ต่อโปรเจกต์ Top E36 32x (ลูกตาเทียม):</strong> เป็นหัวใจในการคุมไทม์ไลน์การพัฒนา ตั้งแต่ออกแบบสถาปัตยกรรมออปติคอลซูม 800mm, การสร้างต้นแบบในห้องทดลอง Cleanroom, จนถึงการทดสอบเชื่อมต่อสัญญาณประสาท<br>• <strong>ต่อโปรเจกต์ Top Mantis Blade MT12 (แขนเทียม):</strong> ควบคุมการประกอบโครงสร้างคาร์บอนไฟเบอร์คอมโพสิตและใบมีดเคลือบเพชรสังเคราะห์ (DLC) ให้ได้มาตรฐานการแพทย์สากลในปีที่ 2')">
+                    <h3>⚙️ ประธานฝ่ายปฏิบัติการ <span class="tag">COO</span></h3>
+                    <p>ควบคุม R&D, ห้องทดลอง, โรงงานต้นแบบ และไทม์ไลน์ 2 ปี</p>
+                    <ul class="list-styled">
+                        <li><strong>คลิกเพื่อเปิดโฮโลแกรมสเปก 3D</strong></li>
+                        <li>ควบคุม R&D Lab | คุมสเปกวัสดุ | จัดการไทม์ไลน์</li>
+                    </ul>
                 </div>
 
-                <div class="cyber-card" style="cursor: default;">
-                    <h3>💰 ประธานเจ้าหน้าที่ฝ่ายการเงิน (CFO)</h3>
-                    <p><strong>หน้าที่หลัก:</strong> ดูแลเงิน 20 ล้านบาท ป้องกันไม่ให้บริษัทใช้เงินหมดก่อนผลิตต้นแบบสำเร็จ จัดทำงบประมาณ วางแผนการเงินทุกไตรมาส และควบคุมความเสี่ยงการลงทุน</p>
-                    <p><strong>ความสำคัญต่อโปรเจกต์:</strong> กำหนดว่าในช่วง 2 ปีแรกต้องเน้นการวิจัย พัฒนา และทดสอบก่อน ห้ามนำเงินก้อนไปสร้างโรงงานใหญ่ตั้งแต่ปีแรก เมื่อผ่านการทดสอบแล้วจึงค่อยระดมทุนรอบใหม่เพื่อสร้างสายการผลิต</p>
+                <!-- CFO -->
+                <div class="cyber-card" onclick="openMgmtModal('CFO', '(Chief Financial Officer)', 'Chief Finance', 'assets/cfo.png', '<strong>หน้าที่หลักระดับองค์กร:</strong><br>• บริหารจัดการและควบคุมทุนจดทะเบียนเริ่มต้น 20 ล้านบาทอย่างมีประสิทธิภาพสูงสุด<br>• จัดทำงบประมาณรายไตรมาส ควบคุมต้นทุนการผลิต และป้องกันความเสี่ยงทางการเงินของบริษัท<br>• วางแผนกระแสเงินสดและการระดมทุนในอนาคต<br><br><strong>ความสำคัญและบทบาทต่อโปรเจกต์งาน:</strong><br>• <strong>ต่อโปรเจกต์ Top E36 32x (ลูกตาเทียม):</strong> จัดสรรงบก้อนสำคัญ 4.5 ล้านบาทสำหรับงาน R&D และคุมงบทำ Engineering Prototype ในปีแรกอย่างเข้มงวด ห้ามใช้เงินเกินตัวก่อนผ่านการทดสอบ<br>• <strong>ต่อโปรเจกต์ Top Mantis Blade MT12 (แขนเทียม):</strong> วางแผนกระจายกระแสเงินสดจากกำไรการจำหน่ายลูกตาเทียมล็อตแรก (Pilot Batch) มา Reinvest พัฒนาแขนเทียม และเตรียมแผนระดมทุน Series A ในปีที่ 2')">
+                    <h3>💰 ประธานฝ่ายการเงิน <span class="tag">CFO</span></h3>
+                    <p>ดูแลทุน 20 ล้านบาท จัดทำงบประมาณ และควบคุมความเสี่ยงการลงทุน</p>
+                    <ul class="list-styled">
+                        <li><strong>คลิกเพื่อเปิดโฮโลแกรมสเปก 3D</strong></li>
+                        <li>บริหารงบ 20 ล้าน | วางแผนการเงิน | ควบคุมความเสี่ยง</li>
+                    </ul>
                 </div>
 
-                <div class="cyber-card" style="cursor: default;">
-                    <h3>🛡️ ประธานเจ้าหน้าที่ฝ่ายความปลอดภัย (CSO)</h3>
-                    <p><strong>หน้าที่หลัก:</strong> ดูแลความปลอดภัยทั้งองค์กรและความปลอดภัยทางไซเบอร์ของอุปกรณ์ไซเบอร์เนติกส์ เนื่องจากดวงตาเทียมมีระบบอิเล็กทรอนิกส์ที่เชื่อมต่อภายนอก ซึ่งองค์การอาหารและยา (FDA) ให้ความสำคัญสูงสุด</p>
-                    <p><strong>ความสำคัญต่อโปรเจกต์:</strong> ดูแลระบบเข้ารหัส การยืนยันตัวตน ความปลอดภัยของอุปกรณ์และเฟิร์มแวร์ การจำลองภัยคุกคาม การทดสอบเจาะระบบ และการอัปเดตอย่างปลอดภัยตั้งแต่วิออกแบบ</p>
+                <!-- CSO -->
+                <div class="cyber-card" onclick="openMgmtModal('CSO', '(Chief Security Officer)', 'The Shadow Walker', 'assets/cso.png', '<strong>หน้าที่หลักระดับองค์กร:</strong><br>• วางระบบรักษาความปลอดภัยทั้งภายในองค์กรและทรัพย์สินทางปัญญา<br>• ควบคุมมาตรฐานความปลอดภัยทางไซเบอร์ (Cybersecurity) ของผลิตภัณฑ์ให้อยู่ในระดับสูงสุดตามข้อกำหนด FDA<br>• ป้องกันการโจมตีทางดิจิทัลและการรั่วไหลของข้อมูลชีวมิติผู้ใช้งาน<br><br><strong>ความสำคัญและบทบาทต่อโปรเจกต์งาน:</strong><br>• <strong>ต่อโปรเจกต์ Top E36 32x (ลูกตาเทียม):</strong> ออกแบบระบบเข้ารหัสควอนตัมและการยืนยันตัวตน ป้องกันไม่ให้แฮกเกอร์เจาะระบบเข้ามาควบคุมการมองเห็นหรือดักจับข้อมูลภาพที่บันทึกไว้<br>• <strong>ต่อโปรเจกต์ Top Mantis Blade MT12 (แขนเทียม):</strong> ตรวจสอบความปลอดภัยของเฟิร์มแวร์เซ็นเซอร์ตรวจจับสัญญาณประสาท (EMG Sensors) และระบบควบคุมใบมีดตั๊กแตน เพื่อป้องกันความผิดพลาดทางคำสั่งกลศาสตร์ที่อาจเป็นอันตรายต่อผู้ใช้งาน')">
+                    <h3>🛡️ ประธานฝ่ายความปลอดภัย <span class="tag">CSO</span></h3>
+                    <p>ดูแลความปลอดภัยองค์กรและ Cybersecurity ของอุปกรณ์ไซเบอร์เนติกส์</p>
+                    <ul class="list-styled">
+                        <li><strong>คลิกเพื่อเปิดโฮโลแกรมสเปก 3D</strong></li>
+                        <li>Cybersecurity | ป้องกันแฮกเกอร์ | มาตรฐาน FDA</li>
+                    </ul>
                 </div>
 
-                <div class="cyber-card" style="cursor: default;">
-                    <h3>👥 หัวหน้าฝ่ายทรัพยากรบุคคล (HR Head)</h3>
-                    <p><strong>หน้าที่หลัก:</strong> สร้างและบริหารทีมงานสหสาขา จัดหาบุคลากรเฉพาะทาง ดูแลสวัสดิการ และกฎหมายแรงงาน</p>
-                    <p><strong>ความสำคัญต่อโปรเจกต์:</strong> ทำหน้าที่สรรหาบุคลากรผู้เชี่ยวชาญเข้าห้องปฏิบัติการ เช่น วิศวกรชีวการแพทย์ วิศวกรออปติคอล วิศวกรอิเล็กทรอนิกส์ วิศวกรซอฟต์แวร์/ปัญญาประดิษฐ์ วิศวกรความปลอดภัยไซเบอร์ ที่ปรึกษาทางการแพทย์ และผู้เชี่ยวชาญด้านกฎระเบียบ</p>
+                <!-- HR Head -->
+                <div class="cyber-card" onclick="openMgmtModal('HR HEAD', '(Head of Human Resources)', 'The Fast', 'assets/hr.png', '<strong>หน้าที่หลักระดับองค์กร:</strong><br>• บริหารทรัพยากรบุคคลและสรรหาบุคลากรผู้เชี่ยวชาญระดับสูงเข้าสู่องค์กร<br>• ดูแลสวัสดิการ กฎหมายแรงงาน และสร้างวัฒนธรรมองค์กรที่ขับเคลื่อนด้วยนวัตกรรม<br>• ส่งเสริมการทำงานร่วมกันระหว่างทีมแพทย์และทีมวิศวกร<br><br><strong>ความสำคัญและบทบาทต่อโปรเจกต์งาน:</strong><br>• <strong>ต่อโปรเจกต์ Top E36 32x (ลูกตาเทียม):</strong> เป็นผู้สรรหาทีมงานเฉพาะทาง เช่น วิศวกรออปติคอล (Optical Engineer), วิศวกรซอฟต์แวร์ประมวลผลภาพ และจักษุแพทย์ผู้เชี่ยวชาญมาประจำการใน Lab<br>• <strong>ต่อโปรเจกต์ Top Mantis Blade MT12 (แขนเทียม):</strong> สรรหาวิศวกรชีวการแพทย์ (Biomedical Engineer) และผู้เชี่ยวชาญด้านวัสดุศาสตร์คอมโพสิต เพื่อเร่งพัฒนาโปรเจกต์ในขวบปีที่สองให้สำเร็จตามเป้าหมาย')">
+                    <h3>👥 หัวหน้าฝ่ายบุคคล <span class="tag">HR Head</span></h3>
+                    <p>สร้างและบริหารทีมงานสหสาขา จัดหาบุคลากรเฉพาะทางเข้าห้องปฏิบัติการ</p>
+                    <ul class="list-styled">
+                        <li><strong>คลิกเพื่อเปิดโฮโลแกรมสเปก 3D</strong></li>
+                        <li>สรรหาผู้เชี่ยวชาญ | บริหารทีม R&D | สวัสดิการ</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1315,21 +1483,18 @@
 
     <script>
         function enterSystem() {
-            // เล่นเสียงต้อนรับ
             const audio = document.getElementById('welcome-audio');
             audio.volume = 0.3; 
             audio.play().catch(error => {
                 console.log("Audio play blocked by browser policy:", error);
             });
 
-            // เล่นเพลงประกอบ BGM (SONG.mp3) โดยปรับลดความดังเหลือ 10% (0.1) ให้ฟังนุ่มนวลไม่ดังเกินไป
             const bgm = document.getElementById('bgm-audio');
-            bgm.volume = 0.1; 
+            bgm.volume = 0.1; // เริ่มต้นที่ 10% ตามค่าสไลเดอร์
             bgm.play().catch(error => {
                 console.log("BGM play blocked by browser policy:", error);
             });
 
-            // แสดง Splash Logo ใหญ่สะใจแบบเกม AAA
             const splash = document.getElementById('game-splash');
             splash.classList.add('active');
 
@@ -1337,13 +1502,20 @@
                 splash.classList.add('pop');
             }, 100);
 
-            // รอให้ Logo เด้งโชว์ความอลังการ 2 วินาที แล้วเฟดออกเข้าสู่เว็บหลัก
             setTimeout(() => {
                 const intro = document.getElementById('intro-screen');
                 intro.classList.add('fade-out');
             }, 2000);
         }
 
+        // ฟังก์ชันปรับระดับเสียง BGM แบบสไลเดอร์ 0-100%
+        function changeBGMVolume(val) {
+            const bgm = document.getElementById('bgm-audio');
+            bgm.volume = val / 100;
+            document.getElementById('volume-percent').innerText = val + '%';
+        }
+
+        // ฟังก์ชันสำหรับหน้าสินค้า (Product Modal เดิม)
         function openHoloModal(title, imgSrc, desc) {
             document.getElementById('holo-product-title').innerText = title;
             document.getElementById('holo-product-img').src = imgSrc;
@@ -1353,6 +1525,19 @@
 
         function closeHoloModal() {
             document.getElementById('holo-modal').classList.remove('active');
+        }
+
+        // ฟังก์ชันสำหรับหน้าผู้บริหาร (Management 2-Column Modal: ซ้ายรูปใหญ่ - ขวาข้อมูลแน่น)
+        function openMgmtModal(title, subtitle, nickname, imgSrc, desc) {
+            document.getElementById('mgmt-modal-title').innerText = title;
+            document.getElementById('mgmt-modal-subtitle').innerText = subtitle + " | " + nickname;
+            document.getElementById('mgmt-modal-img').src = imgSrc;
+            document.getElementById('mgmt-modal-desc').innerHTML = desc;
+            document.getElementById('mgmt-modal').classList.add('active');
+        }
+
+        function closeMgmtModal() {
+            document.getElementById('mgmt-modal').classList.remove('active');
         }
 
         function switchTab(tabId) {
