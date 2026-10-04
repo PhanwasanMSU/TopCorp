@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOP Corporation | Cybernetic Medical Systems</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #050101;
+            --bg-panel: #0d0303;
+            --bg-card: #140505;
+            --primary-red: #ff1e38;
+            --glow-red: rgba(255, 30, 56, 0.8);
+            --text-main: #ffffff;
+            --text-muted: #d0d0d0;
+            --border-red: rgba(255, 30, 56, 0.5);
+            --border-bright: #ff1e38;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: 'Prompt', sans-serif;
+            overflow-x: hidden;
+            font-size: 16px;
+            background-image: 
+                linear-gradient(rgba(255, 30, 56, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 30, 56, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Scanline Effect */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.25;
+        }
+
+        /* CYBERPUNK INTRO SCREEN */
+        #intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1.2s ease, visibility 1.2s ease;
+        }
+
+        #intro-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .intro-content {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .intro-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 52px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-shadow: 0 0 25px var(--primary-red), 0 0 50px var(--primary-red);
+            margin-bottom: 15px;
+            animation: textFlicker 2s infinite;
+        }
+
+        @keyframes textFlicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+            20%, 24%, 55% { opacity: 0.7; text-shadow: none; }
+        }
+
+        .intro-subtitle {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            color: var(--primary-red);
+            letter-spacing: 8px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .cyber-btn {
+            background: rgba(255, 30, 56, 0.1);
+            border: 2px solid var(--primary-red);
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            padding: 16px 45px;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 25px rgba(255, 30, 56, 0.5), inset 0 0 15px rgba(255, 30, 56, 0.3);
+            text-transform: uppercase;
+        }
+
+        .cyber-btn:hover {
+            background: var(--primary-red);
+            box-shadow: 0 0 40px var(--primary-red), 0 0 80px var(--primary-red);
+            transform: scale(1.08);
+            color: #000;
+            font-weight: 900;
+        }
+
+        /* GAME LOGO SPLASH EFFECT */
+        #game-splash {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #200205 0%, #000 80%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        #game-splash.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .splash-logo-img {
+            max-width: 800px;
+            width: 90%;
+            height: auto;
+            filter: drop-shadow(0 0 50px var(--primary-red)) drop-shadow(0 0 100px #ff0033);
+            transform: scale(0.1) rotate(-10deg);
+            opacity: 0;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.4), opacity 0.3s ease;
+        }
+
+        #game-splash.pop .splash-logo-img {
+            transform: scale(1) rotate(0deg);
+            opacity: 1;
+            animation: cyberPulse 1.5s infinite alternate;
+        }
+
+        @keyframes cyberPulse {
+            0% { filter: drop-shadow(0 0 40px var(--primary-red)) drop-shadow(0 0 80px #ff0033); transform: scale(1); }
+            100% { filter: drop-shadow(0 0 70px var(--primary-red)) drop-shadow(0 0 120px #ff1e38); transform: scale(1.03); }
+        }
+
+        header {
+            background: rgba(13, 3, 3, 0.95);
+            border-bottom: 2px solid var(--primary-red);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 5px 20px rgba(255, 30, 56, 0.2);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(255, 30, 56, 0.6));
+        }
+
+        .logo-text p {
+            font-size: 13px;
+            color: var(--primary-red);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            letter-spacing: 1px;
+            padding: 8px 12px;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: #fff;
+            border-color: var(--primary-red);
+            background: rgba(255, 30, 56, 0.2);
+            box-shadow: 0 0 12px rgba(255, 30, 56, 0.5);
+        }
+
+        .container {
+            max-width: 1350px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .page-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            border-left: 6px solid var(--primary-red);
+            padding-left: 20px;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-top: 8px;
+        }
+
+        /* --- ORG CHART STYLES --- */
+        .org-container {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            align-items: center;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .org-level-box {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-red);
+            width: 100%;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 30, 56, 0.15);
+        }
+
+        .org-level-box.top-mgmt { border-top: 4px solid #ff1e38; }
+        .org-level-box.mid-mgmt { border-top: 4px solid #ff5268; }
+        .org-level-box.first-mgmt { border-top: 4px solid #a0a0a0; }
+        .org-level-box.non-mgmt { border-top: 4px solid #505050; }
+
+        .org-level-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background: rgba(255, 30, 56, 0.15);
+            padding: 10px;
+            border: 1px solid var(--border-red);
+        }
+
+        .org-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .org-node {
+            background: var(--bg-card);
+            border: 1px solid var(--border-red);
+            padding: 18px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .org-node:hover {
+            border-color: #fff;
+            box-shadow: 0 0 15px rgba(255, 30, 56, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .org-node h5 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 15px;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .org-node span {
+            font-size: 13px;
+            color: var(--primary-red);
+        }
+
+        /* Hero / Home */
+        .hero-banner {
+            text-align: center;
+            padding: 80px 20px;
+            background: radial-gradient(circle at center, rgba(255, 30, 56, 0.15) 0%, transparent 70%);
+            border: 1px solid var(--border-red);
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .hero-banner h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 52px;
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .hero-banner h1 span {
+            color: var(--primary-red);
+            text-shadow: 0 0 20px var(--glow-red);
+        }
+
+        .hero-banner p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 900px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-red);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .stat-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 38px;
+            color: var(--primary-red);
+            margin-bottom: 12px;
+            text-shadow: 0 0 10px rgba(255,30,56,0.4);
+        }
+
+        .stat-card p {
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        /* Cards Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+            gap: 30px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 25px;
+        }
+
+        .cyber-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-red);
+            padding: 35px;
+            position: relative;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .cyber-card:hover {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 25px rgba(255, 30, 56, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .cyber-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cyber-card p {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .tag {
+            background: rgba(255, 30, 56, 0.2);
+            color: var(--primary-red);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            padding: 5px 12px;
+            border: 1px solid var(--primary-red);
+        }
+
+        .list-styled {
+            list-style: none;
+            margin-top: 18px;
+            border-top: 1px dashed rgba(255, 30, 56, 0.4);
+            padding-top: 18px;
+        }
+
+        .list-styled li {
+            font-size: 15px;
+            color: #ffb3bc;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.6;
+        }
+
+        .list-styled li::before {
+            content: "■";
+            color: var(--primary-red);
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        /* --- 3D HOLOGRAPHIC MODAL POPUP --- */
+        #holo-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 20000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(8px);
+            padding: 20px;
+        }
+
+        #holo-modal.active {
+            display: flex;
+            animation: modalFadeIn 0.3s ease forwards;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .holo-box {
+            background: linear-gradient(135deg, #180305, #080101);
+            border: 2px solid var(--primary-red);
+            width: 100%;
+            max-width: 800px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 0 50px rgba(255, 30, 56, 0.6), inset 0 0 25px rgba(255, 30, 56, 0.3);
+            border-left: 10px solid var(--primary-red);
+        }
+
+        .holo-close {
+            position: absolute;
+            top: 20px; right: 25px;
+            background: transparent;
+            border: 1px solid var(--primary-red);
+            color: var(--primary-red);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            padding: 5px 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .holo-close:hover {
+            background: var(--primary-red);
+            color: #fff;
+            box-shadow: 0 0 15px var(--primary-red);
+        }
+
+        .holo-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 26px;
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .holo-img-container {
+            width: 100%;
+            height: 250px;
+            background: #020000;
+            border: 1px dashed var(--primary-red);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .holo-img-container img {
+            max-height: 90%;
+            max-width: 90%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px rgba(255, 30, 56, 0.6));
+            animation: holoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes holoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .holo-desc {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* --- 3D HOLOGRAPHIC & POP-UP ANIMATIONS --- */
+        .hologram-container {
+            perspective: 1000px;
+            margin-bottom: 35px;
+        }
+
+        .hologram-card {
+            background: linear-gradient(135deg, rgba(20, 5, 5, 0.95), rgba(40, 5, 10, 0.9));
+            border: 2px solid var(--primary-red);
+            padding: 35px;
+            border-left: 8px solid var(--primary-red);
+            box-shadow: 0 10px 30px rgba(255, 30, 56, 0.4), inset 0 0 20px rgba(255, 30, 56, 0.2);
+            transform: translateY(30px) rotateX(10deg);
+            opacity: 0;
+            transition: transform 0.8s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 0.8s ease;
+        }
+
+        .page-section.active .hologram-card {
+            transform: translateY(0px) rotateX(0deg);
+            opacity: 1;
+        }
+
+        /* --- CYBER INFOGRAPHIC & ANIMATED BARS --- */
+        .info-graphic-box {
+            background: var(--bg-panel);
+            border: 1px solid var(--primary-red);
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 0 25px rgba(255, 30, 56, 0.3);
+            transform: scale(0.95);
+            opacity: 0;
+            transition: transform 0.8s ease, opacity 0.8s ease;
+        }
+
+        .page-section.active .info-graphic-box {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .info-graphic-box h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border-red);
+            padding-bottom: 12px;
+        }
+
+        .bar-item {
+            margin-bottom: 18px;
+        }
+
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .bar-track {
+            background: rgba(255, 255, 255, 0.05);
+            height: 14px;
+            border: 1px solid rgba(255, 30, 56, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            background: linear-gradient(90deg, #b3001b, var(--primary-red));
+            height: 100%;
+            width: 0%;
+            transition: width 1.5s cubic-bezier(0.1, 0.8, 0.3, 1);
+            box-shadow: 0 0 10px var(--primary-red);
+        }
+
+        /* Roadmap Timeline Cards */
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .roadmap-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-red);
+            padding: 25px;
+            border-left: 5px solid var(--primary-red);
+            transition: 0.3s;
+        }
+
+        .roadmap-card:hover {
+            border-color: #fff;
+            box-shadow: 0 0 15px rgba(255, 30, 56, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .roadmap-card h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        /* Tables for Financial & Budget */
+        .cyber-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border: 1px solid var(--border-red);
+            margin-top: 25px;
+        }
+
+        .cyber-table th, .cyber-table td {
+            padding: 18px 22px;
+            text-align: left;
+            font-size: 15px;
+            border-bottom: 1px solid rgba(255, 30, 56, 0.25);
+        }
+
+        .cyber-table th {
+            background: rgba(255, 30, 56, 0.2);
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .cyber-table td {
+            color: var(--text-muted);
+        }
+
+        .cyber-table td strong {
+            color: #fff;
+        }
+
+        footer {
+            background: var(--bg-panel);
+            border-top: 1px solid var(--border-red);
+            text-align: center;
+            padding: 35px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-family: 'Orbitron', sans-serif;
+            margin-top: 80px;
+        }
+
+        footer span {
+            color: var(--primary-red);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- INTRO SCREEN -->
+    <div id="intro-screen">
+        <div class="intro-content">
+            <div class="intro-subtitle">TOP CORPORATION OS v2.06</div>
+            <div class="intro-title">Welcome to<br>TOP Corporation</div>
+            <button class="cyber-btn" onclick="enterSystem()">INITIALIZE SYSTEM</button>
+        </div>
+        <!-- Z.Z.Z / 2077 Style Mega Logo Pop Splash -->
+        <div id="game-splash">
+            <img src="assets/logo.png" alt="TOP Corporation Logo" class="splash-logo-img">
+        </div>
+    </div>
+
+    <!-- 3D HOLOGRAPHIC PRODUCT MODAL -->
+    <div id="holo-modal">
+        <div class="holo-box">
+            <button class="holo-close" onclick="closeHoloModal()">[ CLOSE ]</button>
+            <div class="holo-title" id="holo-product-title">PRODUCT SPECIFICATION</div>
+            <div class="holo-img-container">
+                <img id="holo-product-img" src="" alt="Hologram Product Preview">
+            </div>
+            <div class="holo-desc" id="holo-product-desc">
+                กำลังโหลดข้อมูลระบบโฮโลแกรม...
+            </div>
+        </div>
+    </div>
+
+    <!-- ไฟล์เสียง AI Welcome และ BGM (SONG.mp3 ในโฟลเดอร์ assets) -->
+    <audio id="welcome-audio" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
+    <audio id="bgm-audio" src="assets/SONG.mp3" preload="auto" loop></audio>
+
+    <header>
+        <div class="logo-area">
+            <img src="assets/logo.png" alt="TOP Corporation Logo" class="logo-img">
+            <div class="logo-text">
+                <p>Cybernetic Medical Systems</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="switchTab('home')" class="nav-link active" id="link-home">หน้าหลัก</a></li>
+                <li><a href="#" onclick="switchTab('environment')" class="nav-link" id="link-environment">สภาพแวดล้อม</a></li>
+                <li><a href="#" onclick="switchTab('orgchart')" class="nav-link" id="link-orgchart">โครงสร้างองค์กร</a></li>
+                <li><a href="#" onclick="switchTab('customers')" class="nav-link" id="link-customers">กลุ่มลูกค้า</a></li>
+                <li><a href="#" onclick="switchTab('products')" class="nav-link" id="link-products">สินค้าและต้นทุน</a></li>
+                <li><a href="#" onclick="switchTab('management')" class="nav-link" id="link-management">ผู้บริหาร C-Level</a></li>
+                <li><a href="#" onclick="switchTab('budget')" class="nav-link" id="link-budget">งบ & แผน 2 ปี</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- TAB 1: HOME -->
+        <div id="home" class="page-section active">
+            <div class="hero-banner">
+                <h1>BETTER LIFE, <span>THROUGH INNOVATION</span></h1>
+                <p>ผู้นำด้านเทคโนโลยีอวัยวะเทียมไซเบอร์เนติกส์และการแพทย์แห่งอนาคต ขับเคลื่อนด้วยทุนจดทะเบียน 20 ล้านบาท สนับสนุนโดยภาครัฐและบริษัทประกันภัยชั้นนำ มุ่งยกระดับคุณภาพชีวิตมนุษยชาติด้วยนวัตกรรมชีวกลศาสตร์ระดับสูง</p>
+                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                    <span class="tag">ทุนเริ่มต้น: 20 ล้านบาท</span>
+                    <span class="tag">ระยะเวลาแผนงาน: 2 ปี</span>
+                    <span class="tag">R&D Lab ภายในบริษัท</span>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>20,000,000 ฿</h3>
+                    <p>ทุนจดทะเบียนเริ่มต้น (รัฐ + ประกันภัย)</p>
+                </div>
+                <div class="stat-card">
+                    <h3>2 CORE</h3>
+                    <p>ผลิตภัณฑ์เรือธงล้ำสมัย (ลูกตาเทียม & แขนมีดตั๊กแตน)</p>
+                </div>
+                <div class="stat-card">
+                    <h3>5 PROS</h3>
+                    <p>คณะผู้บริหารระดับสูงขับเคลื่อนโปรเจกต์</p>
+                </div>
+                <div class="stat-card">
+                    <h3>2 YEARS</h3>
+                    <p>แผนยุทธศาสตร์พลิกโฉมวงการแพทย์ไซเบอร์เนติกส์</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: ENVIRONMENT & CULTURE -->
+        <div id="environment" class="page-section">
+            <div class="section-header">
+                <h2>สภาพแวดล้อมภายในและวัฒนธรรมองค์กร</h2>
+                <p>โครงสร้างบรรยากาศการทำงานและการขับเคลื่อนคุณค่าหลักของ TOP Corporation</p>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 30px;">
+                <div class="cyber-card">
+                    <h3>วัฒนธรรมองค์กร (Corporate Culture)</h3>
+                    <p>มุ่งเน้นนวัตกรรมทางการแพทย์ ความปลอดภัยสูงสุด และการพัฒนาคุณภาพชีวิตของผู้ใช้งาน บุคลากรทุกฝ่ายร่วมมือกันพัฒนาอวัยวะเทียมไซเบอร์เนติกส์ที่มีประสิทธิภาพสูงสุด</p>
+                    <ul class="list-styled">
+                        <li><strong>นวัตกรรม (Innovation):</strong> พัฒนาเทคโนโลยีอวัยวะเทียมและระบบไซเบอร์เนติกส์อย่างต่อเนื่อง</li>
+                        <li><strong>ใส่ใจผู้ใช้งาน (User-Centric):</strong> ให้ความสำคัญกับคุณภาพชีวิตและความต้องการเฉพาะของผู้ป่วย</li>
+                        <li><strong>ความปลอดภัย (Safety):</strong> ผลิตภัณฑ์ทุกชิ้นต้องมีมาตรฐานและผ่านการตรวจสอบความปลอดภัยขั้นสูง</li>
+                        <li><strong>การทำงานเป็นทีม (Teamwork):</strong> แพทย์, วิศวกร, นักวิจัย และฝ่ายผลิตทำงานบูรณาการร่วมกันอย่างไร้รอยต่อ</li>
+                        <li><strong>คุณภาพและความรับผิดชอบ (Quality & Responsibility):</strong> ควบคุมมาตรฐานเข้มงวดตั้งแต่ขั้นตอนการออกแบบจนถึงการใช้งานจริง</li>
+                    </ul>
+                </div>
+                <div class="cyber-card">
+                    <h3>สภาพแวดล้อมห้องทดลองและสำนักงาน (Lab Environment)</h3>
+                    <p>พื้นที่ปฏิบัติการภายในองค์กรถูกออกแบบตามมาตรฐานห้องปลอดเชื้อระดับสูง (Cleanroom ISO Class) เพียบพร้อมด้วยอุปกรณ์วิศวกรรมเมคคาทรอนิกส์ เครื่องพิมพ์ 3 มิติเชิงอุตสาหกรรม และสถานีทดสอบการเชื่อมต่อประสาทเทียม</p>
+                    <ul class="list-styled">
+                        <li><strong>In-house R&D Lab:</strong> ห้องปฏิบัติการวิจัยและผลิตต้นแบบเอง 100% ควบคุมความลับทางเทคโนโลยีสูงสุด</li>
+                        <li><strong>Cross-Functional Workspace:</strong> พื้นที่ทำงานร่วมกันระหว่างทีมแพทย์ผู้เชี่ยวชาญและวิศวกรซอฟต์แวร์/ฮาร์ดแวร์</li>
+                        <li><strong>Cyber Security Zone:</strong> พื้นที่ปลอดภัยเข้มงวดสำหรับการจัดเก็บข้อมูลชีวมิติและอัลกอริทึมปัญญาประดิษฐ์</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ORGANIZATION STRUCTURE -->
+        <div id="orgchart" class="page-section">
+            <div class="section-header">
+                <h2>โครงสร้างระดับชั้นการจัดการในองค์การ</h2>
+                <p>Management Hierarchy - ผังโครงสร้างองค์กร TOP Corporation Co., Ltd.</p>
+            </div>
+
+            <div class="org-container">
+                <div class="org-level-box top-mgmt">
+                    <div class="org-level-title">ผู้บริหารระดับสูง (Top Management)</div>
+                    <div class="org-grid">
+                        <div class="org-node">
+                            <h5>Chief Executive Officer</h5>
+                            <span>(CEO)</span>
+                        </div>
+                        <div class="org-node">
+                            <h5>Chief Operating Officer</h5>
+                            <span>(COO)</span>
+                        </div>
+                        <div class="org-node">
+                            <h5>Chief Financial Officer</h5>
+                            <span>(CFO)</span>
+                        </div>
+                        <div class="org-node">
+                            <h5>Chief Security Officer</h5>
+                            <span>(CSO)</span>
+                        </div>
+                        <div class="org-node">
+                            <h5>Head of Human Resources</h5>
+                            <span>(HR Head)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="org-level-box mid-mgmt">
+                    <div class="org-level-title">ผู้บริหารระดับกลาง (Middle Management)</div>
+                    <div class="org-grid">
+                        <div class="org-node">
+                            <h5>ฝ่ายวิจัยและพัฒนา</h5>
+                            <span>(R&D)</span>
+                        </div>
+                        <div class="org-node">
+                            <h5>ฝ่ายผลิต</h5>
+                            <span>(Production)</span>
+                        </div>
+                        <div class="org-node">
+                            <h5>ฝ่ายการตลาด</h5>
+                            <span>(Marketing)</span>
+                        </div>
+                        <div class="org-node">
+                            <h5>ฝ่ายทรัพยากรบุคคล</h5>
+                            <span>(Human Resources)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="org-level-box first-mgmt">
+                    <div class="org-level-title">ผู้บริหารระดับต้น (First-line Management)</div>
+                    <div class="org-grid" style="max-width: 400px; margin: 0 auto;">
+                        <div class="org-node" style="grid-column: span 2;">
+                            <h5>หัวหน้างาน / Supervisor</h5>
+                            <span>(First-line Supervisor)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="org-level-box non-mgmt">
+                    <div class="org-level-title">พนักงานระดับปฏิบัติการ (Nonmanagerial Personnel)</div>
+                    <div class="org-grid">
+                        <div class="org-node">
+                            <h5>วิศวกร</h5>
+                            <span>(Engineer)</span>
+                        </div>
+                        <div class="org-node">
+                            <h5>นักวิจัย</h5>
+                            <span>(Researcher)</span>
+                        </div>
+                        <div class="org-node">
+                            <h5>ช่างเทคนิค</h5>
+                            <span>(Technician)</span>
+                        </div>
+                        <div class="org-node">
+                            <h5>ฝ่ายขาย</h5>
+                            <span>(Sales)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: CUSTOMERS -->
+        <div id="customers" class="page-section">
+            <div class="section-header">
+                <h2>กลุ่มลูกค้าและผู้มีส่วนได้ส่วนเสีย (Target Customers & Stakeholders)</h2>
+                <p>การวิเคราะห์ตลาดและการกระจายสินค้าของ TOP Corporation สู่ระบบสาธารณสุขและหน่วยงานความมั่นคง</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="cyber-card">
+                    <h3>1. โรงพยาบาลและคลินิก</h3>
+                    <p><strong>ผู้ซื้อ / ผู้จัดหา & ผู้ติดตั้ง</strong></p>
+                    <ul class="list-styled">
+                        <li>โรงพยาบาลรัฐ และโรงพยาบาลมหาวิทยาลัยชั้นนำ</li>
+                        <li>โรงพยาบาลเอกชนระดับพรีเมียม</li>
+                        <li>คลินิกอวัยวะเทียมและกายอุปกรณ์เฉพาะทาง</li>
+                    </ul>
+                </div>
+                <div class="cyber-card">
+                    <h3>2. ศูนย์ฟื้นฟูสมรรถภาพ</h3>
+                    <p><strong>ผู้ใช้ในการฟื้นฟูและฝึกผู้ป่วย</strong></p>
+                    <ul class="list-styled">
+                        <li>ศูนย์กายภาพบำบัดทั่วประเทศ</li>
+                        <li>ศูนย์ฟื้นฟูสมรรถภาพผู้พิการ</li>
+                    </ul>
+                </div>
+                <div class="cyber-card">
+                    <h3>3. หน่วยงานทหาร / ความมั่นคง</h3>
+                    <p><strong>ผู้ซื้อ / ผู้ใช้งานยุทธปัจจัย</strong></p>
+                    <ul class="list-styled">
+                        <li>หน่วยงานกองทัพและกระทรวงกลาโหม</li>
+                        <li>ทหารผ่านศึกผู้ได้รับบาดเจ็บจากการปฏิบัติหน้าที่</li>
+                    </ul>
+                </div>
+                <div class="cyber-card">
+                    <h3>4. ผู้ใช้งานปลายทาง (End-Users)</h3>
+                    <p><strong>ผู้รับการรักษาและอัปเกรดร่างกาย</strong></p>
+                    <ul class="list-styled">
+                        <li>ผู้สูญเสียแขน/ขาจากอุบัติเหตุหรือโรคภัย</li>
+                        <li>ผู้ป่วยที่มีความพิการแต่กำเนิด</li>
+                        <li>กลุ่มบุคคลที่ต้องการเพิ่มขีดความสามารถทางกายภาพ (Augmentation)</li>
+                    </ul>
+                </div>
+                <div class="cyber-card" style="grid-column: span 2;">
+                    <h3>5. บริษัทประกันและกองทุนภาครัฐ</h3>
+                    <p><strong>ผู้สนับสนุนค่าใช้จ่ายหลักของโปรเจกต์</strong></p>
+                    <ul class="list-styled">
+                        <li>บริษัทประกันสุขภาพเอกชน (อนุมัติวงเงินคุ้มครองอวัยวะเทียมไซเบอร์เนติกส์ราคาสูง)</li>
+                        <li>กองทุนสนับสนุนนวัตกรรมทางการแพทย์แห่งชาติและสวัสดิการรัฐ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: PRODUCTS & COSTS -->
+        <div id="products" class="page-section">
+            <div class="section-header">
+                <h2>ผลิตภัณฑ์และโครงสร้างต้นทุน (Products & Cost Breakdown)</h2>
+                <p>คลิกที่การ์ดสินค้าแต่ละชิ้นเพื่อเปิดระบบแสดงข้อมูลและรูปภาพจำลองแบบ 3D Hologram</p>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 30px;">
+                <!-- สินค้าชิ้นที่ 1: ลูกตาเทียม -->
+                <div class="cyber-card" onclick="openHoloModal('Top E36 32x (Cybernetic Eye)', 'assets/eye.png', 'ฟังก์ชันหลัก: ซูมคมชัดเทียบเท่าเลนส์กล้อง 800mm, ระบบ Night Vision มองเห็นในที่มืด, Reality Scanner สแกนวัตถุแบบเรียลไทม์, Lens Disruptor ตัดการทำงานกล้องรอบตัว และ Picture Capture บันทึกภาพในความทรงจำดิจิทัล<br><br><strong>วัสดุที่ใช้:</strong> ไทเทเนียมอัลลอยด์เกรดการแพทย์, เลนส์แก้วออปติคอลนาโนโค้ท และมอเตอร์จิ๋ว Piezoelectric<br><strong>ต้นทุนการผลิต:</strong> ~350,000 – 500,000 บาท/ยูนิต')">
+                    <h3>Top E36 32x <span class="tag">ลูกตาเทียมไซเบอร์เนติกส์</span></h3>
+                    <p>ผลิตภัณฑ์ชิ้นแรกของบริษัท ออกแบบมาเพื่อทดแทนดวงตาที่สูญเสีย พร้อมเพิ่มขีดความสามารถในการมองเห็นเหนือมนุษย์</p>
+                    <ul class="list-styled">
+                        <li><strong>คลิกเพื่อเปิดโฮโลแกรมสเปก 3D</strong></li>
+                        <li>ซูม 800mm | Night Vision | Reality Scanner</li>
+                    </ul>
+                </div>
+
+                <!-- สินค้าชิ้นที่ 2: แขนเทียม -->
+                <div class="cyber-card" onclick="openHoloModal('Top Mantis Blade MT12 (Prosthetic Arm)', 'assets/arm.png', 'ฟังก์ชันหลัก: เชื่อมต่อสัญญาณประสาท (EMG Sensors) เคลื่อนไหวเป็นธรรมชาติ, ส่วนขยายคมมีดตั๊กแตนพับเก็บได้ ใช้ตัด หั่น อาหาร หรือกระดูกได้ทันทีโดยไร้สนิม และใช้เป็นอาวุธป้องกันตัวยามฉุกเฉิน<br><br><strong>วัสดุที่ใช้:</strong> คาร์บอนไฟเบอร์คอมโพสิต, อลูมิเนียมเกรดอากาศยาน และใบมีดเคลือบเพชรสังเคราะห์ (DLC)<br><strong>ต้นทุนการผลิต:</strong> ~220,000 – 290,000 บาท/ยูนิต')">
+                    <h3>Top Mantis Blade MT12 <span class="tag">แขนเทียม + คมมีดตั๊กแตน</span></h3>
+                    <p>ผลิตภัณฑ์ชิ้นที่สอง (ต่อยอดในปีที่ 2) สำหรับผู้พิการแขนขาด มาพร้อมฟังก์ชันอเนกประสงค์และระบบป้องกันตัว</p>
+                    <ul class="list-styled">
+                        <li><strong>คลิกเพื่อเปิดโฮโลแกรมสเปก 3D</strong></li>
+                        <li>เชื่อมต่อประสาท | คมมีด DLC ไร้สนิม | ป้องกันตัว</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- สินค้าชิ้นที่ 3: ชิปชีวภาพ -->
+            <div class="cyber-card" onclick="openHoloModal('Top RELIC Biochip', 'assets/chip.png', 'ชิปเชิงชีวภาพสำหรับจัดเก็บเอ็นแกรมของสมองมนุษย์ให้อยู่ในรูปแบบดิจิทัล เพื่อการเก็บบันทึกความทรงจำระยะยาวด้วยความปลอดภัยสูงสุด<br><br><strong>ฟังก์ชันหลัก:</strong> สำรองข้อมูลความทรงจำระยะยาว และเข้ารหัสควอนตัมป้องกันการเจาะระบบ')">
+                <h3>Top RELIC Biochip <span class="tag">ชิปชีวภาพความทรงจำ</span></h3>
+                <p>ชิปเชิงชีวภาพสำหรับจัดเก็บเอ็นแกรมของสมองมนุษย์ให้อยู่ในรูปแบบดิจิทัล เพื่อการเก็บบันทึกความทรงจำระยะยาวด้วยความปลอดภัยสูงสุด</p>
+                <ul class="list-styled">
+                    <li><strong>คลิกเพื่อเปิดโฮโลแกรมสเปก 3D</strong></li>
+                    <li>สำรองข้อมูลความทรงจำ | เข้ารหัสควอนตัม</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TAB 5: MANAGEMENT (TRANSLATED TO THAI) -->
+        <div id="management" class="page-section">
+            <div class="section-header">
+                <h2>คณะผู้บริหารระดับสูง (C-Level Management Roles)</h2>
+                <p>หน้าที่เชิงลึกและความสำคัญของบอร์ดบริหาร ต่อความสำเร็จของโปรเจกต์อวัยวะเทียมไซเบอร์เนติกส์</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="cyber-card" style="grid-column: span 3; border-left: 6px solid var(--primary-red); cursor: default;">
+                    <h3>👑 ซีอีโอ (CEO) — ประธานเจ้าหน้าที่บริหาร (The Black Eagle)</h3>
+                    <p><strong>หน้าที่หลัก:</strong> ผู้กำหนดทิศทางและวิสัยทัศน์ของ TOP Corporation ตัดสินใจเรื่องผลิตภัณฑ์ ติดต่อรัฐบาล บริษัทประกันภัย โรงพยาบาล หาพาร์ทเนอร์ยุทธศาสตร์ อนุมัติงบโครงการ และควบคุมภาพรวมโครงการ 2 ปี</p>
+                    <p><strong>ความสำคัญต่อโปรเจกต์:</strong> ต้องตอบคำถามว่า *"เราจะสร้างดวงตาเทียมนี้เพื่อใคร และจะทำให้ผู้ป่วยเข้าถึงได้อย่างไร?"* รวมถึงการสร้างความร่วมมือกับภาครัฐและบริษัทประกัน เนื่องจากโมเดลธุรกิจเน้นตลาดสุขภาพ ภาครัฐ และประกันภัย</p>
+                </div>
+
+                <div class="cyber-card" style="grid-column: span 3; border-left: 6px solid var(--primary-red); cursor: default;">
+                    <h3>⚙️ ประธานเจ้าหน้าที่ฝ่ายปฏิบัติการ (COO)</h3>
+                    <p><strong>หน้าที่หลัก:</strong> แปลงแผนงานให้เกิดขึ้นจริง ควบคุมงานวิจัยและพัฒนา (R&D) ห้องทดลอง การผลิตต้นแบบ ห่วงโซ่อุปทาน การจัดซื้อ การควบคุมคุณภาพ ไทม์ไลน์ และประสานงานระหว่างทีมวิศวกรกับแพทย์</p>
+                    <p><strong>ความสำคัญต่อโปรเจกต์:</strong> เป็นหัวใจในการคุมไทม์ไลน์การพัฒนา เช่น เดือนที่ 1 ออกแบบ / เดือนที่ 3 สร้างต้นแบบ / เดือนที่ 12 ทำต้นแบบวิศวกรรม / ปีที่ 2 ทดสอบและขอรับรองมาตรฐาน</p>
+                </div>
+
+                <div class="cyber-card" style="cursor: default;">
+                    <h3>💰 ประธานเจ้าหน้าที่ฝ่ายการเงิน (CFO)</h3>
+                    <p><strong>หน้าที่หลัก:</strong> ดูแลเงิน 20 ล้านบาท ป้องกันไม่ให้บริษัทใช้เงินหมดก่อนผลิตต้นแบบสำเร็จ จัดทำงบประมาณ วางแผนการเงินทุกไตรมาส และควบคุมความเสี่ยงการลงทุน</p>
+                    <p><strong>ความสำคัญต่อโปรเจกต์:</strong> กำหนดว่าในช่วง 2 ปีแรกต้องเน้นการวิจัย พัฒนา และทดสอบก่อน ห้ามนำเงินก้อนไปสร้างโรงงานใหญ่ตั้งแต่ปีแรก เมื่อผ่านการทดสอบแล้วจึงค่อยระดมทุนรอบใหม่เพื่อสร้างสายการผลิต</p>
+                </div>
+
+                <div class="cyber-card" style="cursor: default;">
+                    <h3>🛡️ ประธานเจ้าหน้าที่ฝ่ายความปลอดภัย (CSO)</h3>
+                    <p><strong>หน้าที่หลัก:</strong> ดูแลความปลอดภัยทั้งองค์กรและความปลอดภัยทางไซเบอร์ของอุปกรณ์ไซเบอร์เนติกส์ เนื่องจากดวงตาเทียมมีระบบอิเล็กทรอนิกส์ที่เชื่อมต่อภายนอก ซึ่งองค์การอาหารและยา (FDA) ให้ความสำคัญสูงสุด</p>
+                    <p><strong>ความสำคัญต่อโปรเจกต์:</strong> ดูแลระบบเข้ารหัส การยืนยันตัวตน ความปลอดภัยของอุปกรณ์และเฟิร์มแวร์ การจำลองภัยคุกคาม การทดสอบเจาะระบบ และการอัปเดตอย่างปลอดภัยตั้งแต่วิออกแบบ</p>
+                </div>
+
+                <div class="cyber-card" style="cursor: default;">
+                    <h3>👥 หัวหน้าฝ่ายทรัพยากรบุคคล (HR Head)</h3>
+                    <p><strong>หน้าที่หลัก:</strong> สร้างและบริหารทีมงานสหสาขา จัดหาบุคลากรเฉพาะทาง ดูแลสวัสดิการ และกฎหมายแรงงาน</p>
+                    <p><strong>ความสำคัญต่อโปรเจกต์:</strong> ทำหน้าที่สรรหาบุคลากรผู้เชี่ยวชาญเข้าห้องปฏิบัติการ เช่น วิศวกรชีวการแพทย์ วิศวกรออปติคอล วิศวกรอิเล็กทรอนิกส์ วิศวกรซอฟต์แวร์/ปัญญาประดิษฐ์ วิศวกรความปลอดภัยไซเบอร์ ที่ปรึกษาทางการแพทย์ และผู้เชี่ยวชาญด้านกฎระเบียบ</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 6: BUDGET & ROADMAP -->
+        <div id="budget" class="page-section">
+            <div class="section-header">
+                <h2>แผนงานและงบประมาณ 20 ล้านบาท (Budget & 2-Year Roadmap)</h2>
+                <p>รายละเอียดแผนงานไตรมาสแรกในรูปแบบ 3D Hologram, การจัดสรรงบ 20 ล้านบาท และแผนยุทธศาสตร์ 2 ปี</p>
+            </div>
+
+            <!-- 3D HOLOGRAPHIC FIRST QUARTER ROADMAP -->
+            <div class="hologram-container">
+                <div class="hologram-card">
+                    <h3>🚀 แผนปฏิบัติการ 3 เดือนแรก (First Quarter / Q1 Roadmap - 3D Holo View)</h3>
+                    <p>ก้าวแรกในการตั้งไข่บริษัทและการเตรียมความพร้อมโครงสร้างพื้นฐานสำหรับโปรเจกต์ลูกตาเทียม</p>
+                    
+                    <div class="roadmap-grid">
+                        <div class="roadmap-card">
+                            <h4>เดือนที่ 1: Setup & Core Team</h4>
+                            <ul class="list-styled">
+                                <li>จดทะเบียนจัดตั้ง TOP Corporation Co., Ltd.</li>
+                                <li>รับมอบทุนเริ่มต้น 20 ล้านบาท (รัฐ + ประกันภัย)</li>
+                                <li>จัดตั้งทีม C-Level และเริ่มเปิดสรรหาบุคลากรสาย R&D โดย HR</li>
+                                <li>จัดเตรียมสถานที่และเซ็ตอัป Lab ภายในบริษัท</li>
+                            </ul>
+                        </div>
+                        <div class="roadmap-card">
+                            <h4>เดือนที่ 2: R&D & Architecture</h4>
+                            <ul class="list-styled">
+                                <li>เริ่มออกแบบสถาปัตยกรรมฮาร์ดแวร์และซอฟต์แวร์ลูกตาเทียม</li>
+                                <li>นำเข้าวัตถุดิบและชิ้นส่วนออปติคอลซูม 800mm, ชิป Night Vision</li>
+                                <li>CFO อนุมัติเบิกจ่ายงบจัดซื้อเครื่องมือแพทย์และเครื่องพิมพ์ 3 มิติ</li>
+                                <li>CSO วางระบบ Cybersecurity พื้นฐานใน Lab และข้อมูลชีวมิติ</li>
+                            </ul>
+                        </div>
+                        <div class="roadmap-card">
+                            <h4>เดือนที่ 3: First Prototype & Testing</h4>
+                            <ul class="list-styled">
+                                <li>ประกอบชิ้นงานต้นแบบชิ้นแรก (First Prototype) ในห้องทดลอง</li>
+                                <li>COO ควบคุมการทดสอบระบบเชื่อมต่อประสาทเบื้องต้น</li>
+                                <li>ทีมแพทย์และวิศวกรประเมินข้อบกพร่องเพื่อปรับปรุงในรุ่นถัดไป</li>
+                                <li>สรุปรายงานไตรมาสแรกเสนอผู้ถือหุ้นและพาร์ทเนอร์ภาครัฐ</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INFOGRAPHIC ANIMATED BARS -->
+            <div class="info-graphic-box">
+                <h4>📊 CYBERNETIC BUDGET ALLOCATION HOLOGRAPHIC INFOGRAPHIC (20 ล้านบาท)</h4>
+                
+                <div class="bar-item">
+                    <div class="bar-label"><span>R&D + วิศวกรรม (4.5 ลบ.)</span><span>22.5%</span></div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 0%" data-width="22.5%"></div></div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label"><span>ห้องทดลองและอุปกรณ์ (3.0 ลบ.)</span><span>15.0%</span></div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 0%" data-width="15%"></div></div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label"><span>Prototype / วัตถุดิบ (3.0 ลบ.)</span><span>15.0%</span></div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 0%" data-width="15%"></div></div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label"><span>ทีมแพทย์และผู้เชี่ยวชาญ (2.0 ลบ.)</span><span>10.0%</span></div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 0%" data-width="10%"></div></div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label"><span>Software / AI / Cybersecurity (1.5 ลบ.)</span><span>7.5%</span></div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 0%" data-width="7.5%"></div></div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label"><span>Regulatory / Testing / Certification (1.5 ลบ.)</span><span>7.5%</span></div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 0%" data-width="7.5%"></div></div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label"><span>บุคลากร / HR / Training (1.5 ลบ.)</span><span>7.5%</span></div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 0%" data-width="7.5%"></div></div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label"><span>Legal / Insurance / IP + Marketing (1.0 ลบ.)</span><span>5.0%</span></div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 0%" data-width="5%"></div></div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label"><span>เงินสำรองฉุกเฉิน (2.0 ลบ.)</span><span>10.0%</span></div>
+                    <div class="bar-track"><div class="bar-fill" style="width: 0%" data-width="10%"></div></div>
+                </div>
+            </div>
+
+            <div class="cyber-card" style="margin-top: 30px; margin-bottom: 30px;">
+                <h3>รายละเอียดตารางงบประมาณ 20 ล้านบาท</h3>
+                <table class="cyber-table">
+                    <tr>
+                        <th>หมวดหมู่งบประมาณ</th>
+                        <th>จำนวนเงิน (บาท)</th>
+                        <th>รายละเอียดการนำไปใช้</th>
+                    </tr>
+                    <tr>
+                        <td><strong>R&D + วิศวกรรม</strong></td>
+                        <td>4,500,000 ฿</td>
+                        <td>วิจัยระบบออปติคอลซูม 800mm, ระบบ Night Vision และอัลกอริทึม Reality Scanner</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ห้องทดลองและอุปกรณ์</strong></td>
+                        <td>3,000,000 ฿</td>
+                        <td>จัดตั้งห้องปฏิบัติการปลอดเชื้อ, เครื่องมือวัดความละเอียดสูง และเครื่องพิมพ์ 3 มิติ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prototype / วัตถุดิบ</strong></td>
+                        <td>3,000,000 ฿</td>
+                        <td>นำเข้าชิ้นส่วนอิเล็กทรอนิกส์เกรดการแพทย์และไทเทเนียมสำหรับทำชิ้นงานต้นแบบ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ทีมแพทย์และผู้เชี่ยวชาญ</strong></td>
+                        <td>2,000,000 ฿</td>
+                        <td>ค่าปรึกษาและทดสอบทางคลินิกร่วมกับจักษุแพทย์และผู้เชี่ยวชาญประสาทวิทยา</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Software / AI / Cybersecurity</strong></td>
+                        <td>1,500,000 ฿</td>
+                        <td>พัฒนาระบบประมวลผลภาพ, ปัญญาประดิษฐ์ และระบบความปลอดภัยไซเบอร์ของอุปกรณ์</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Regulatory / Testing / Certification</strong></td>
+                        <td>1,500,000 ฿</td>
+                        <td>ค่าทดสอบมาตรฐานความปลอดภัยทางการแพทย์และขอใบรับรองจากหน่วยงานรัฐ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>บุคลากร / HR / Training</strong></td>
+                        <td>1,500,000 ฿</td>
+                        <td>ค่าตอบแทนทีมวิศวกร นักวิจัย และพนักงานประจำสำหรับช่วงตั้งต้น</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Legal / Insurance / IP</strong></td>
+                        <td>500,000 ฿</td>
+                        <td>จดทะเบียนสิทธิบัตรเทคโนโลยีและสัญญาทางกฎหมายพาร์ทเนอร์</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Marketing / Business Development</strong></td>
+                        <td>500,000 ฿</td>
+                        <td>ประสานงานโรงพยาบาลเครือข่ายและบริษัทประกันภัยพาร์ทเนอร์</td>
+                    </tr>
+                    <tr>
+                        <td><strong>เงินสำรองฉุกเฉิน</strong></td>
+                        <td>2,000,000 ฿</td>
+                        <td>ทุนสำรองบริหารความเสี่ยงโปรเจกต์ตลอดระยะเวลาการดำเนินงาน</td>
+                    </tr>
+                    <tr>
+                        <td><strong>รวมทั้งสิ้น</strong></td>
+                        <td><strong>20,000,000 ฿</strong></td>
+                        <td><strong>ทุนจดทะเบียนเริ่มต้น 2 ปีแรก</strong></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 30px;">
+                <div class="cyber-card">
+                    <h3>2. ผลลัพธ์และกระแสเงินสดใน 1 ปีแรก (Year 1)</h3>
+                    <ul class="list-styled">
+                        <li><strong>ผลงานสำเร็จ:</strong> พัฒนาและสร้าง "ลูกตาเทียมไซเบอร์เนติกส์ (Top E36 32x)" สำเร็จจนได้รุ่น Engineering Prototype พร้อมผ่านการทดสอบความปลอดภัยทางคลินิก</li>
+                        <li><strong>กลุ่มลูกค้าผู้ซื้อล็อตแรก:</strong> โรงพยาบาลพาร์ทเนอร์, หน่วยงานกองทัพ/ทหารผ่านศึก, และผู้ป่วยผ่านเครือข่ายเงินสนับสนุนบริษัทประกันสุขภาพ</li>
+                        <li><strong>รายรับและการคืนทุน:</strong> จำหน่ายล็อตนำร่อง (Pilot Batch) สร้างรายได้กลับเข้าบริษัทประมาณ 15–25 ล้านบาท (เกือบเท่าทุนก้อนแรก) พร้อมเงินสนับสนุนจากภาครัฐราว 10 ล้านบาท</li>
+                    </ul>
+                </div>
+
+                <div class="cyber-card">
+                    <h3>3. การต่อยอดงบประมาณและภาพรวม 2 ปี (Year 2)</h3>
+                    <ul class="list-styled">
+                        <li><strong>การ Reinvest งบประมาณ:</strong> นำรายได้และกำไรจากปีแรกไปต่อยอดโปรเจกต์สินค้าชิ้นที่สอง **"แขนเทียมพร้อมคมมีดตั๊กแตน (Top Mantis Blade MT12)"** สำหรับผู้พิการและป้องกันตัว</li>
+                        <li><strong>กลยุทธ์การเติบโต:</strong> ปีที่ 1 เน้น R&D + Prototype + Certification ลูกตาเทียม / ปีที่ 2 ขยายไลน์ผลิตภัณฑ์แขนเทียมไซเบอร์เนติกส์และเตรียมระดมทุนรอบใหม่ (Series A) เพื่อสร้างโรงงานผลิตขนาดใหญ่</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 <span>TOP Corporation Co., Ltd.</span> All Rights Reserved. | Cybernetic Medical Systems.</p>
+    </footer>
+
+    <script>
+        function enterSystem() {
+            // เล่นเสียงต้อนรับ
+            const audio = document.getElementById('welcome-audio');
+            audio.volume = 0.3; 
+            audio.play().catch(error => {
+                console.log("Audio play blocked by browser policy:", error);
+            });
+
+            // เล่นเพลงประกอบ BGM (SONG.mp3)
+            const bgm = document.getElementById('bgm-audio');
+            bgm.volume = 0.25; // ปรับความดัง BGM 25% กำลังฟังเพลินๆ
+            bgm.play().catch(error => {
+                console.log("BGM play blocked by browser policy:", error);
+            });
+
+            // แสดง Splash Logo ใหญ่สะใจแบบเกม AAA
+            const splash = document.getElementById('game-splash');
+            splash.classList.add('active');
+
+            setTimeout(() => {
+                splash.classList.add('pop');
+            }, 100);
+
+            // รอให้ Logo เด้งโชว์ความอลังการ 2 วินาที แล้วเฟดออกเข้าสู่เว็บหลัก
+            setTimeout(() => {
+                const intro = document.getElementById('intro-screen');
+                intro.classList.add('fade-out');
+            }, 2000);
+        }
+
+        function openHoloModal(title, imgSrc, desc) {
+            document.getElementById('holo-product-title').innerText = title;
+            document.getElementById('holo-product-img').src = imgSrc;
+            document.getElementById('holo-product-desc').innerHTML = desc;
+            document.getElementById('holo-modal').classList.add('active');
+        }
+
+        function closeHoloModal() {
+            document.getElementById('holo-modal').classList.remove('active');
+        }
+
+        function switchTab(tabId) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => link.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            document.getElementById('link-' + tabId).classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (tabId === 'budget') {
+                setTimeout(() => {
+                    const bars = document.querySelectorAll('.bar-fill');
+                    bars.forEach(bar => {
+                        bar.style.width = bar.getAttribute('data-width');
+                    });
+                }, 300);
+            }
+        }
+    </script>
+
+</body>
+</html>
