@@ -25,11 +25,13 @@
             scroll-behavior: smooth;
         }
 
-        body {
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
             background-color: var(--bg-base);
             color: var(--text-main);
             font-family: 'Prompt', sans-serif;
-            overflow-x: hidden;
             font-size: 16px;
             background-image: 
                 linear-gradient(rgba(255, 30, 56, 0.02) 1px, transparent 1px),
@@ -74,14 +76,16 @@
         .intro-content {
             text-align: center;
             z-index: 2;
+            padding: 0 20px;
+            width: 100%;
         }
 
         .intro-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 52px;
+            font-size: clamp(28px, 6vw, 52px);
             font-weight: 900;
             color: #fff;
-            letter-spacing: 6px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             text-shadow: 0 0 25px var(--primary-red), 0 0 50px var(--primary-red);
             margin-bottom: 15px;
@@ -95,9 +99,9 @@
 
         .intro-subtitle {
             font-family: 'Orbitron', sans-serif;
-            font-size: 16px;
+            font-size: 14px;
             color: var(--primary-red);
-            letter-spacing: 8px;
+            letter-spacing: 6px;
             margin-bottom: 40px;
             text-transform: uppercase;
         }
@@ -107,8 +111,8 @@
             border: 2px solid var(--primary-red);
             color: #fff;
             font-family: 'Orbitron', sans-serif;
-            font-size: 18px;
-            padding: 16px 45px;
+            font-size: 16px;
+            padding: 14px 35px;
             letter-spacing: 3px;
             cursor: pointer;
             transition: 0.3s;
@@ -145,7 +149,7 @@
 
         .splash-logo-img {
             max-width: 800px;
-            width: 90%;
+            width: 85%;
             height: auto;
             filter: drop-shadow(0 0 50px var(--primary-red)) drop-shadow(0 0 100px #ff0033);
             transform: scale(0.1) rotate(-10deg);
@@ -161,13 +165,13 @@
 
         @keyframes cyberPulse {
             0% { filter: drop-shadow(0 0 40px var(--primary-red)) drop-shadow(0 0 80px #ff0033); transform: scale(1); }
-            100% { filter: drop-shadow(0 0 70px var(--primary-red)) drop-shadow(0 0 120px #ff1e38); transform: scale(1.03); }
+            100% { filter: drop-shadow(0 0 70px var(--primary-red)) drop-shadow(0 0 120px var(--primary-red)); transform: scale(1.03); }
         }
 
         header {
             background: rgba(13, 3, 3, 0.95);
             border-bottom: 2px solid var(--primary-red);
-            padding: 15px 40px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -176,25 +180,28 @@
             z-index: 1000;
             backdrop-filter: blur(15px);
             box-shadow: 0 5px 20px rgba(255, 30, 56, 0.2);
+            flex-wrap: wrap;
+            gap: 15px;
+            width: 100%;
         }
 
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .logo-img {
-            height: 45px;
+            height: 38px;
             width: auto;
             object-fit: contain;
             filter: drop-shadow(0 0 10px rgba(255, 30, 56, 0.6));
         }
 
         .logo-text p {
-            font-size: 13px;
+            font-size: 11px;
             color: var(--primary-red);
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
@@ -203,7 +210,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 12px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
@@ -211,9 +218,9 @@
             color: var(--text-muted);
             text-decoration: none;
             font-family: 'Orbitron', sans-serif;
-            font-size: 12px;
-            letter-spacing: 1px;
-            padding: 8px 12px;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            padding: 6px 10px;
             border: 1px solid transparent;
             transition: 0.3s;
         }
@@ -226,14 +233,18 @@
         }
 
         .container {
+            width: 100%;
             max-width: 1350px;
             margin: 0 auto;
-            padding: 50px 20px;
+            padding: 40px 15px;
+            box-sizing: border-box;
         }
 
         .page-section {
             display: none;
             animation: fadeIn 0.5s ease-in-out forwards;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .page-section.active {
@@ -247,41 +258,47 @@
 
         .section-header {
             border-left: 6px solid var(--primary-red);
-            padding-left: 20px;
-            margin-bottom: 40px;
+            padding-left: 15px;
+            margin-bottom: 30px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .section-header h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 36px;
+            font-size: clamp(22px, 4vw, 36px);
             color: #fff;
             letter-spacing: 2px;
             text-transform: uppercase;
+            word-break: break-word;
         }
 
         .section-header p {
             color: var(--text-muted);
-            font-size: 16px;
-            margin-top: 8px;
+            font-size: 15px;
+            margin-top: 6px;
         }
 
         /* --- ORG CHART STYLES --- */
         .org-container {
             display: flex;
             flex-direction: column;
-            gap: 35px;
+            gap: 25px;
             align-items: center;
             width: 100%;
-            padding: 20px 0;
+            padding: 10px 0;
+            box-sizing: border-box;
         }
 
         .org-level-box {
             background: var(--bg-panel);
             border: 1px solid var(--border-red);
             width: 100%;
-            padding: 25px;
+            max-width: 100%;
+            padding: 20px;
             position: relative;
             box-shadow: 0 0 20px rgba(255, 30, 56, 0.15);
+            box-sizing: border-box;
         }
 
         .org-level-box.top-mgmt { border-top: 4px solid #ff1e38; }
@@ -291,29 +308,31 @@
 
         .org-level-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 18px;
+            font-size: 16px;
             color: #fff;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             background: rgba(255, 30, 56, 0.15);
-            padding: 10px;
+            padding: 8px;
             border: 1px solid var(--border-red);
         }
 
         .org-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            width: 100%;
         }
 
         .org-node {
             background: var(--bg-card);
             border: 1px solid var(--border-red);
-            padding: 18px;
+            padding: 15px;
             text-align: center;
             transition: 0.3s;
+            box-sizing: border-box;
         }
 
         .org-node:hover {
@@ -324,32 +343,35 @@
 
         .org-node h5 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 15px;
+            font-size: 14px;
             color: #fff;
             margin-bottom: 5px;
         }
 
         .org-node span {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--primary-red);
         }
 
         /* Hero / Home */
         .hero-banner {
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px 15px;
             background: radial-gradient(circle at center, rgba(255, 30, 56, 0.15) 0%, transparent 70%);
             border: 1px solid var(--border-red);
             position: relative;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .hero-banner h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 52px;
+            font-size: clamp(26px, 5vw, 52px);
             color: #fff;
-            margin-bottom: 20px;
-            letter-spacing: 3px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            word-break: break-word;
         }
 
         .hero-banner h1 span {
@@ -358,61 +380,72 @@
         }
 
         .hero-banner p {
-            font-size: 18px;
+            font-size: 16px;
             color: var(--text-muted);
             max-width: 900px;
-            margin: 0 auto 30px;
+            margin: 0 auto 25px;
             line-height: 1.7;
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+            width: 100%;
         }
 
         .stat-card {
             background: var(--bg-panel);
             border: 1px solid var(--border-red);
-            padding: 30px;
+            padding: 25px;
             text-align: center;
             position: relative;
+            box-sizing: border-box;
         }
 
         .stat-card h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 38px;
+            font-size: 32px;
             color: var(--primary-red);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             text-shadow: 0 0 10px rgba(255,30,56,0.4);
         }
 
         .stat-card p {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--text-muted);
         }
 
         /* Cards Grid */
         .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
         }
 
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 25px;
+            grid-template-columns: 100%;
+            gap: 20px;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         .cyber-card {
             background: var(--bg-card);
             border: 1px solid var(--border-red);
-            padding: 35px;
+            padding: 25px;
             position: relative;
             transition: 0.3s;
             cursor: pointer;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
 
         .cyber-card:hover {
@@ -423,52 +456,59 @@
 
         .cyber-card h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 22px;
+            font-size: clamp(16px, 3.5vw, 22px);
             color: #fff;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            word-break: break-word;
         }
 
         .cyber-card p {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 18px;
+            line-height: 1.7;
+            margin-bottom: 15px;
         }
 
         .tag {
             background: rgba(255, 30, 56, 0.2);
             color: var(--primary-red);
             font-family: 'Orbitron', sans-serif;
-            font-size: 12px;
-            padding: 5px 12px;
+            font-size: 11px;
+            padding: 4px 10px;
             border: 1px solid var(--primary-red);
         }
 
         .list-styled {
             list-style: none;
-            margin-top: 18px;
+            margin-top: 15px;
             border-top: 1px dashed rgba(255, 30, 56, 0.4);
-            padding-top: 18px;
+            padding-top: 15px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .list-styled li {
-            font-size: 15px;
+            font-size: 14px;
             color: #ffb3bc;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             align-items: flex-start;
-            gap: 10px;
+            gap: 8px;
             line-height: 1.6;
+            word-break: break-word;
         }
 
         .list-styled li::before {
             content: "■";
             color: var(--primary-red);
-            font-size: 12px;
-            margin-top: 2px;
+            font-size: 10px;
+            margin-top: 3px;
+            flex-shrink: 0;
         }
 
         /* --- 3D HOLOGRAPHIC MODAL POPUP --- */
@@ -481,7 +521,8 @@
             justify-content: center;
             align-items: center;
             backdrop-filter: blur(8px);
-            padding: 20px;
+            padding: 15px;
+            box-sizing: border-box;
         }
 
         #holo-modal.active {
@@ -498,22 +539,25 @@
             background: linear-gradient(135deg, #180305, #080101);
             border: 2px solid var(--primary-red);
             width: 100%;
-            max-width: 800px;
-            padding: 40px;
+            max-width: 750px;
+            padding: 25px;
             position: relative;
             box-shadow: 0 0 50px rgba(255, 30, 56, 0.6), inset 0 0 25px rgba(255, 30, 56, 0.3);
-            border-left: 10px solid var(--primary-red);
+            border-left: 8px solid var(--primary-red);
+            max-height: 90vh;
+            overflow-y: auto;
+            box-sizing: border-box;
         }
 
         .holo-close {
             position: absolute;
-            top: 20px; right: 25px;
+            top: 15px; right: 15px;
             background: transparent;
             border: 1px solid var(--primary-red);
             color: var(--primary-red);
             font-family: 'Orbitron', sans-serif;
-            font-size: 16px;
-            padding: 5px 12px;
+            font-size: 14px;
+            padding: 4px 10px;
             cursor: pointer;
             transition: 0.3s;
         }
@@ -526,23 +570,26 @@
 
         .holo-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 26px;
+            font-size: 18px;
             color: #fff;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            padding-right: 60px;
+            word-break: break-word;
         }
 
         .holo-img-container {
             width: 100%;
-            height: 250px;
+            height: 220px;
             background: #020000;
             border: 1px dashed var(--primary-red);
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             position: relative;
             overflow: hidden;
+            box-sizing: border-box;
         }
 
         .holo-img-container img {
@@ -559,26 +606,32 @@
         }
 
         .holo-desc {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-muted);
-            line-height: 1.8;
+            line-height: 1.7;
+            word-break: break-word;
         }
 
         /* --- 3D HOLOGRAPHIC & POP-UP ANIMATIONS --- */
         .hologram-container {
             perspective: 1000px;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .hologram-card {
             background: linear-gradient(135deg, rgba(20, 5, 5, 0.95), rgba(40, 5, 10, 0.9));
             border: 2px solid var(--primary-red);
-            padding: 35px;
-            border-left: 8px solid var(--primary-red);
+            padding: 25px;
+            border-left: 6px solid var(--primary-red);
             box-shadow: 0 10px 30px rgba(255, 30, 56, 0.4), inset 0 0 20px rgba(255, 30, 56, 0.2);
-            transform: translateY(30px) rotateX(10deg);
+            transform: translateY(20px) rotateX(5deg);
             opacity: 0;
             transition: transform 0.8s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 0.8s ease;
+            width: 100%;
+            box-sizing: border-box;
+            word-break: break-word;
         }
 
         .page-section.active .hologram-card {
@@ -590,12 +643,14 @@
         .info-graphic-box {
             background: var(--bg-panel);
             border: 1px solid var(--primary-red);
-            padding: 30px;
+            padding: 25px;
             margin-top: 20px;
             box-shadow: 0 0 25px rgba(255, 30, 56, 0.3);
             transform: scale(0.95);
             opacity: 0;
             transition: transform 0.8s ease, opacity 0.8s ease;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .page-section.active .info-graphic-box {
@@ -606,32 +661,37 @@
         .info-graphic-box h4 {
             font-family: 'Orbitron', sans-serif;
             color: #fff;
-            font-size: 18px;
-            margin-bottom: 25px;
+            font-size: 16px;
+            margin-bottom: 20px;
             letter-spacing: 1px;
             border-bottom: 1px solid var(--border-red);
-            padding-bottom: 12px;
+            padding-bottom: 10px;
+            word-break: break-word;
         }
 
         .bar-item {
-            margin-bottom: 18px;
+            margin-bottom: 15px;
+            width: 100%;
         }
 
         .bar-label {
             display: flex;
             justify-content: space-between;
-            font-size: 15px;
+            font-size: 13px;
             color: var(--text-main);
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             font-family: 'Orbitron', sans-serif;
+            flex-wrap: wrap;
+            gap: 5px;
         }
 
         .bar-track {
             background: rgba(255, 255, 255, 0.05);
-            height: 14px;
+            height: 12px;
             border: 1px solid rgba(255, 30, 56, 0.4);
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
 
         .bar-fill {
@@ -645,45 +705,55 @@
         /* Roadmap Timeline Cards */
         .roadmap-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+            width: 100%;
         }
 
         .roadmap-card {
             background: var(--bg-card);
             border: 1px solid var(--border-red);
-            padding: 25px;
-            border-left: 5px solid var(--primary-red);
+            padding: 20px;
+            border-left: 4px solid var(--primary-red);
             transition: 0.3s;
+            box-sizing: border-box;
+            word-break: break-word;
         }
 
         .roadmap-card:hover {
             border-color: #fff;
             box-shadow: 0 0 15px rgba(255, 30, 56, 0.5);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         .roadmap-card h4 {
             font-family: 'Orbitron', sans-serif;
             color: #fff;
-            font-size: 18px;
-            margin-bottom: 12px;
+            font-size: 16px;
+            margin-bottom: 10px;
         }
 
         /* Tables for Financial & Budget */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            box-sizing: border-box;
+        }
+
         .cyber-table {
             width: 100%;
+            min-width: 550px;
             border-collapse: collapse;
             background: var(--bg-card);
             border: 1px solid var(--border-red);
-            margin-top: 25px;
+            margin-top: 20px;
         }
 
         .cyber-table th, .cyber-table td {
-            padding: 18px 22px;
+            padding: 15px 18px;
             text-align: left;
-            font-size: 15px;
+            font-size: 14px;
             border-bottom: 1px solid rgba(255, 30, 56, 0.25);
         }
 
@@ -691,7 +761,7 @@
             background: rgba(255, 30, 56, 0.2);
             font-family: 'Orbitron', sans-serif;
             color: #fff;
-            font-size: 16px;
+            font-size: 15px;
             letter-spacing: 1px;
         }
 
@@ -707,11 +777,13 @@
             background: var(--bg-panel);
             border-top: 1px solid var(--border-red);
             text-align: center;
-            padding: 35px;
-            font-size: 14px;
+            padding: 30px 15px;
+            font-size: 13px;
             color: var(--text-muted);
             font-family: 'Orbitron', sans-serif;
-            margin-top: 80px;
+            margin-top: 60px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         footer span {
@@ -969,7 +1041,7 @@
                         <li>กลุ่มบุคคลที่ต้องการเพิ่มขีดความสามารถทางกายภาพ (Augmentation)</li>
                     </ul>
                 </div>
-                <div class="cyber-card" style="grid-column: span 2;">
+                <div class="cyber-card" style="grid-column: span 1;">
                     <h3>5. บริษัทประกันและกองทุนภาครัฐ</h3>
                     <p><strong>ผู้สนับสนุนค่าใช้จ่ายหลักของโปรเจกต์</strong></p>
                     <ul class="list-styled">
@@ -1020,7 +1092,7 @@
             </div>
         </div>
 
-        <!-- TAB 5: MANAGEMENT (TRANSLATED TO THAI) -->
+        <!-- TAB 5: MANAGEMENT -->
         <div id="management" class="page-section">
             <div class="section-header">
                 <h2>คณะผู้บริหารระดับสูง (C-Level Management Roles)</h2>
@@ -1028,13 +1100,13 @@
             </div>
 
             <div class="grid-3">
-                <div class="cyber-card" style="grid-column: span 3; border-left: 6px solid var(--primary-red); cursor: default;">
+                <div class="cyber-card" style="border-left: 6px solid var(--primary-red); cursor: default;">
                     <h3>👑 ซีอีโอ (CEO) — ประธานเจ้าหน้าที่บริหาร (The Black Eagle)</h3>
                     <p><strong>หน้าที่หลัก:</strong> ผู้กำหนดทิศทางและวิสัยทัศน์ของ TOP Corporation ตัดสินใจเรื่องผลิตภัณฑ์ ติดต่อรัฐบาล บริษัทประกันภัย โรงพยาบาล หาพาร์ทเนอร์ยุทธศาสตร์ อนุมัติงบโครงการ และควบคุมภาพรวมโครงการ 2 ปี</p>
                     <p><strong>ความสำคัญต่อโปรเจกต์:</strong> ต้องตอบคำถามว่า *"เราจะสร้างดวงตาเทียมนี้เพื่อใคร และจะทำให้ผู้ป่วยเข้าถึงได้อย่างไร?"* รวมถึงการสร้างความร่วมมือกับภาครัฐและบริษัทประกัน เนื่องจากโมเดลธุรกิจเน้นตลาดสุขภาพ ภาครัฐ และประกันภัย</p>
                 </div>
 
-                <div class="cyber-card" style="grid-column: span 3; border-left: 6px solid var(--primary-red); cursor: default;">
+                <div class="cyber-card" style="border-left: 6px solid var(--primary-red); cursor: default;">
                     <h3>⚙️ ประธานเจ้าหน้าที่ฝ่ายปฏิบัติการ (COO)</h3>
                     <p><strong>หน้าที่หลัก:</strong> แปลงแผนงานให้เกิดขึ้นจริง ควบคุมงานวิจัยและพัฒนา (R&D) ห้องทดลอง การผลิตต้นแบบ ห่วงโซ่อุปทาน การจัดซื้อ การควบคุมคุณภาพ ไทม์ไลน์ และประสานงานระหว่างทีมวิศวกรกับแพทย์</p>
                     <p><strong>ความสำคัญต่อโปรเจกต์:</strong> เป็นหัวใจในการคุมไทม์ไลน์การพัฒนา เช่น เดือนที่ 1 ออกแบบ / เดือนที่ 3 สร้างต้นแบบ / เดือนที่ 12 ทำต้นแบบวิศวกรรม / ปีที่ 2 ทดสอบและขอรับรองมาตรฐาน</p>
@@ -1149,68 +1221,70 @@
 
             <div class="cyber-card" style="margin-top: 30px; margin-bottom: 30px;">
                 <h3>รายละเอียดตารางงบประมาณ 20 ล้านบาท</h3>
-                <table class="cyber-table">
-                    <tr>
-                        <th>หมวดหมู่งบประมาณ</th>
-                        <th>จำนวนเงิน (บาท)</th>
-                        <th>รายละเอียดการนำไปใช้</th>
-                    </tr>
-                    <tr>
-                        <td><strong>R&D + วิศวกรรม</strong></td>
-                        <td>4,500,000 ฿</td>
-                        <td>วิจัยระบบออปติคอลซูม 800mm, ระบบ Night Vision และอัลกอริทึม Reality Scanner</td>
-                    </tr>
-                    <tr>
-                        <td><strong>ห้องทดลองและอุปกรณ์</strong></td>
-                        <td>3,000,000 ฿</td>
-                        <td>จัดตั้งห้องปฏิบัติการปลอดเชื้อ, เครื่องมือวัดความละเอียดสูง และเครื่องพิมพ์ 3 มิติ</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Prototype / วัตถุดิบ</strong></td>
-                        <td>3,000,000 ฿</td>
-                        <td>นำเข้าชิ้นส่วนอิเล็กทรอนิกส์เกรดการแพทย์และไทเทเนียมสำหรับทำชิ้นงานต้นแบบ</td>
-                    </tr>
-                    <tr>
-                        <td><strong>ทีมแพทย์และผู้เชี่ยวชาญ</strong></td>
-                        <td>2,000,000 ฿</td>
-                        <td>ค่าปรึกษาและทดสอบทางคลินิกร่วมกับจักษุแพทย์และผู้เชี่ยวชาญประสาทวิทยา</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Software / AI / Cybersecurity</strong></td>
-                        <td>1,500,000 ฿</td>
-                        <td>พัฒนาระบบประมวลผลภาพ, ปัญญาประดิษฐ์ และระบบความปลอดภัยไซเบอร์ของอุปกรณ์</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Regulatory / Testing / Certification</strong></td>
-                        <td>1,500,000 ฿</td>
-                        <td>ค่าทดสอบมาตรฐานความปลอดภัยทางการแพทย์และขอใบรับรองจากหน่วยงานรัฐ</td>
-                    </tr>
-                    <tr>
-                        <td><strong>บุคลากร / HR / Training</strong></td>
-                        <td>1,500,000 ฿</td>
-                        <td>ค่าตอบแทนทีมวิศวกร นักวิจัย และพนักงานประจำสำหรับช่วงตั้งต้น</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Legal / Insurance / IP</strong></td>
-                        <td>500,000 ฿</td>
-                        <td>จดทะเบียนสิทธิบัตรเทคโนโลยีและสัญญาทางกฎหมายพาร์ทเนอร์</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Marketing / Business Development</strong></td>
-                        <td>500,000 ฿</td>
-                        <td>ประสานงานโรงพยาบาลเครือข่ายและบริษัทประกันภัยพาร์ทเนอร์</td>
-                    </tr>
-                    <tr>
-                        <td><strong>เงินสำรองฉุกเฉิน</strong></td>
-                        <td>2,000,000 ฿</td>
-                        <td>ทุนสำรองบริหารความเสี่ยงโปรเจกต์ตลอดระยะเวลาการดำเนินงาน</td>
-                    </tr>
-                    <tr>
-                        <td><strong>รวมทั้งสิ้น</strong></td>
-                        <td><strong>20,000,000 ฿</strong></td>
-                        <td><strong>ทุนจดทะเบียนเริ่มต้น 2 ปีแรก</strong></td>
-                    </tr>
-                </table>
+                <div class="table-responsive">
+                    <table class="cyber-table">
+                        <tr>
+                            <th>หมวดหมู่งบประมาณ</th>
+                            <th>จำนวนเงิน (บาท)</th>
+                            <th>รายละเอียดการนำไปใช้</th>
+                        </tr>
+                        <tr>
+                            <td><strong>R&D + วิศวกรรม</strong></td>
+                            <td>4,500,000 ฿</td>
+                            <td>วิจัยระบบออปติคอลซูม 800mm, ระบบ Night Vision และอัลกอริทึม Reality Scanner</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ห้องทดลองและอุปกรณ์</strong></td>
+                            <td>3,000,000 ฿</td>
+                            <td>จัดตั้งห้องปฏิบัติการปลอดเชื้อ, เครื่องมือวัดความละเอียดสูง และเครื่องพิมพ์ 3 มิติ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Prototype / วัตถุดิบ</strong></td>
+                            <td>3,000,000 ฿</td>
+                            <td>นำเข้าชิ้นส่วนอิเล็กทรอนิกส์เกรดการแพทย์และไทเทเนียมสำหรับทำชิ้นงานต้นแบบ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ทีมแพทย์และผู้เชี่ยวชาญ</strong></td>
+                            <td>2,000,000 ฿</td>
+                            <td>ค่าปรึกษาและทดสอบทางคลินิกร่วมกับจักษุแพทย์และผู้เชี่ยวชาญประสาทวิทยา</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Software / AI / Cybersecurity</strong></td>
+                            <td>1,500,000 ฿</td>
+                            <td>พัฒนาระบบประมวลผลภาพ, ปัญญาประดิษฐ์ และระบบความปลอดภัยไซเบอร์ของอุปกรณ์</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Regulatory / Testing / Certification</strong></td>
+                            <td>1,500,000 ฿</td>
+                            <td>ค่าทดสอบมาตรฐานความปลอดภัยทางการแพทย์และขอใบรับรองจากหน่วยงานรัฐ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>บุคลากร / HR / Training</strong></td>
+                            <td>1,500,000 ฿</td>
+                            <td>ค่าตอบแทนทีมวิศวกร นักวิจัย และพนักงานประจำสำหรับช่วงตั้งต้น</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Legal / Insurance / IP</strong></td>
+                            <td>500,000 ฿</td>
+                            <td>จดทะเบียนสิทธิบัตรเทคโนโลยีและสัญญาทางกฎหมายพาร์ทเนอร์</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Marketing / Business Development</strong></td>
+                            <td>500,000 ฿</td>
+                            <td>ประสานงานโรงพยาบาลเครือข่ายและบริษัทประกันภัยพาร์ทเนอร์</td>
+                        </tr>
+                        <tr>
+                            <td><strong>เงินสำรองฉุกเฉิน</strong></td>
+                            <td>2,000,000 ฿</td>
+                            <td>ทุนสำรองบริหารความเสี่ยงโปรเจกต์ตลอดระยะเวลาการดำเนินงาน</td>
+                        </tr>
+                        <tr>
+                            <td><strong>รวมทั้งสิ้น</strong></td>
+                            <td><strong>20,000,000 ฿</strong></td>
+                            <td><strong>ทุนจดทะเบียนเริ่มต้น 2 ปีแรก</strong></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
 
             <div class="grid-2" style="margin-bottom: 30px;">
@@ -1248,9 +1322,9 @@
                 console.log("Audio play blocked by browser policy:", error);
             });
 
-            // เล่นเพลงประกอบ BGM (SONG.mp3)
+            // เล่นเพลงประกอบ BGM (SONG.mp3) โดยปรับลดความดังเหลือ 10% (0.1) ให้ฟังนุ่มนวลไม่ดังเกินไป
             const bgm = document.getElementById('bgm-audio');
-            bgm.volume = 0.12; // ปรับความดัง BGM 25% กำลังฟังเพลินๆ
+            bgm.volume = 0.1; 
             bgm.play().catch(error => {
                 console.log("BGM play blocked by browser policy:", error);
             });
