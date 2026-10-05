@@ -213,7 +213,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
@@ -221,9 +221,9 @@
             color: var(--text-muted);
             text-decoration: none;
             font-family: 'Orbitron', sans-serif;
-            font-size: 12px;
-            letter-spacing: 1px;
-            padding: 8px 12px;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            padding: 6px 10px;
             border: 1px solid transparent;
             transition: 0.3s;
         }
@@ -239,12 +239,12 @@
         .volume-control-box {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: rgba(255, 30, 56, 0.1);
             border: 1px solid var(--border-red);
-            padding: 6px 12px;
+            padding: 5px 10px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 12px;
+            font-size: 11px;
             color: #fff;
             box-shadow: 0 0 10px rgba(255, 30, 56, 0.2);
         }
@@ -252,7 +252,7 @@
         .volume-control-box input[type="range"] {
             accent-color: var(--primary-red);
             cursor: pointer;
-            width: 80px;
+            width: 60px;
         }
 
         .container {
@@ -597,7 +597,7 @@
             line-height: 1.8;
         }
 
-        /* --- MANAGEMENT MODAL (ดีไซน์ 2 คอลัมน์ที่รองรับมือถือและ PC สมบูรณ์แบบ) --- */
+        /* --- MANAGEMENT MODAL --- */
         #mgmt-modal {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -869,7 +869,7 @@
             color: var(--primary-red);
         }
 
-        /* --- MEDIA QUERY สำหรับมือถือ (Responsive ป้องกัน UI พัง) --- */
+        /* --- MEDIA QUERY สำหรับมือถือ --- */
         @media screen and (max-width: 900px) {
             .grid-3 {
                 grid-template-columns: 100% !important;
@@ -923,13 +923,12 @@
             <div class="intro-title">Welcome to<br>TOP Corporation</div>
             <button class="cyber-btn" onclick="enterSystem()">INITIALIZE SYSTEM</button>
         </div>
-        <!-- Z.Z.Z / 2077 Style Mega Logo Pop Splash -->
         <div id="game-splash">
             <img src="assets/logo.png" alt="TOP Corporation Logo" class="splash-logo-img">
         </div>
     </div>
 
-    <!-- 3D HOLOGRAPHIC MODAL (สำหรับหน้าสินค้า) -->
+    <!-- 3D HOLOGRAPHIC MODAL (สินค้า) -->
     <div id="holo-modal">
         <div class="holo-box">
             <button class="holo-close" onclick="closeHoloModal()">[ CLOSE ]</button>
@@ -943,7 +942,7 @@
         </div>
     </div>
 
-    <!-- MANAGEMENT 2-COLUMN MODAL (ดีไซน์ใหม่: ซ้ายรูปใหญ่ - ขวาข้อมูลแน่น) -->
+    <!-- MANAGEMENT MODAL -->
     <div id="mgmt-modal">
         <div class="mgmt-box">
             <button class="mgmt-close" onclick="closeMgmtModal()">[ CLOSE ]</button>
@@ -977,13 +976,13 @@
                     <li><a href="#" onclick="switchTab('home')" class="nav-link active" id="link-home">หน้าหลัก</a></li>
                     <li><a href="#" onclick="switchTab('environment')" class="nav-link" id="link-environment">สภาพแวดล้อม</a></li>
                     <li><a href="#" onclick="switchTab('orgchart')" class="nav-link" id="link-orgchart">โครงสร้างองค์กร</a></li>
+                    <li><a href="#" onclick="switchTab('research')" class="nav-link" id="link-research">ผลวิจัย R&D</a></li>
                     <li><a href="#" onclick="switchTab('customers')" class="nav-link" id="link-customers">กลุ่มลูกค้า</a></li>
                     <li><a href="#" onclick="switchTab('products')" class="nav-link" id="link-products">สินค้าและต้นทุน</a></li>
                     <li><a href="#" onclick="switchTab('management')" class="nav-link" id="link-management">ผู้บริหาร C-Level</a></li>
                     <li><a href="#" onclick="switchTab('budget')" class="nav-link" id="link-budget">งบ & แผน 2 ปี</a></li>
                 </ul>
             </nav>
-            <!-- วิดเจ็ตสไลเดอร์ปรับระดับเสียง BGM (0-100%) -->
             <div class="volume-control-box">
                 <span>🔊 BGM</span>
                 <input type="range" id="bgm-volume-slider" min="0" max="100" value="10" oninput="changeBGMVolume(this.value)">
@@ -1147,6 +1146,44 @@
             </div>
         </div>
 
+        <!-- NEW TAB: RESEARCH & DEVELOPMENT STORY (หน้าผลวิจัย) -->
+        <div id="research" class="page-section">
+            <div class="section-header">
+                <h2>เรื่องราวผลงานวิจัยและพัฒนา (R&D Journey)</h2>
+                <p>เส้นทางนวัตกรรมไซเบอร์เนติกส์ จากจุดเริ่มต้นห้องทดลองสู่ผลิตภัณฑ์เรือธงระดับสากล</p>
+            </div>
+
+            <div class="cyber-card" style="margin-bottom: 30px; border-left: 6px solid var(--primary-red);">
+                <h3>🔬 1. จุดเริ่มต้นและการค้นคว้าวิจัย (The Genesis & Material Sourcing)</h3>
+                <p>ทีมวิจัยและพัฒนาของ TOP Corporation เริ่มต้นจากการศึกษาข้อจำกัดของอวัยวะเทียมแบบดั้งเดิมที่ไม่สามารถตอบสนองการใช้งานเชิงลึกได้ ทีมงานจึงได้ออกสำรวจและคัดสรรวัสดุเกรดการแพทย์ขั้นสูงจากทั่วโลก นำมาผสานเข้ากับเทคโนโลยีชีวกลศาสตร์ (Biomechatronics)</p>
+                <ul class="list-styled">
+                    <li><strong>แหล่งที่มาของวัสดุ:</strong> โลหะผสมไทเทเนียมเกรดอากาศยาน (Aerospace-grade Titanium) นำเข้าจากห้องปฏิบัติการโลหะวิทยาขั้นสูง, เลนส์กระจกออปติคอลนาโนโค้ท, คาร์บอนไฟเบอร์คอมโพสิตน้ำหนักเบาพิเศษ และเพชรสังเคราะห์ (DLC) สำหรับเคลือบคมตัด</li>
+                    <li><strong>ข้อดีของวัสดุ:</strong> น้ำหนักเบา ทนทานต่อการกัดกร่อนของของเหลวในร่างกาย เข้ากันได้ดีกับเนื้อเยื่อชีวภาพ (Biocompatibility) และไม่เกิดอาการต่อต้านจากภูมิคุ้มกัน</li>
+                    <li><strong>ข้อเสีย / ความท้าทาย:</strong> ต้นทุนการจัดหาวัตถุดิบสูงมาก กระบวนการขึ้นรูปชิ้นส่วนระดับนาโนมีความซับซ้อน และต้องควบคุมสภาพแวดล้อมห้องปลอดเชื้อ (Cleanroom) อย่างเข้มงวดตลอด 24 ชั่วโมง</li>
+                </ul>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 30px;">
+                <div class="cyber-card" onclick="openHoloModal('Top E36 32x (Cybernetic Eye)', 'assets/eye.png', '<strong>วิวัฒนาการ R&D ชิ้นที่ 1:</strong> พัฒนาขึ้นเพื่อแก้ปัญหาผู้ป่วยสูญเสียการมองเห็น ผสานระบบซูม 800mm, Night Vision และ Reality Scanner เข้ากับเส้นประสาทตาโดยตรง ผ่านการทดลองในห้องแล็บกว่า 1,200 ครั้งจนสำเร็จเป็นผลิตภัณฑ์ชิ้นแรก')">
+                    <h3>👁️ 2. ผลงานวิจัยชิ้นที่ 1: ลูกตาเทียม <span class="tag">Top E36 32x</span></h3>
+                    <p>ผลลัพธ์จากการทุ่มเทวิจัยระบบประสาทเทียมและออปติคอลเรนจ์ นวัตกรรมดวงตาไซเบอร์เนติกส์ที่มอบการมองเห็นเหนือมนุษย์ พร้อมระบบสแกนวัตถุและบันทึกภาพความทรงจำดิจิทัล</p>
+                    <ul class="list-styled">
+                        <li><strong>คลิกเพื่อดูภาพโฮโลแกรม 3D</strong></li>
+                        <li>ซูม 800mm | Night Vision | สแกนภาพเรียลไทม์</li>
+                    </ul>
+                </div>
+
+                <div class="cyber-card" onclick="openHoloModal('Top Mantis Blade MT12 (Prosthetic Arm)', 'assets/arm.png', '<strong>วิวัฒนาการ R&D ชิ้นที่ 2:</strong> ต่อเนื่องจากความสำเร็จของลูกตาเทียม ทีมวิจัยได้นำกำไรและทุนรอบใหม่มาพัฒนาแขนเทียมอเนกประสงค์ ผสานเซ็นเซอร์ EMG อ่านสัญญาณกล้ามเนื้อ และซ่อนคมมีดตั๊กแตนพับเก็บได้สำหรับงานช่างและป้องกันตัว')">
+                    <h3>🦾 3. ผลงานวิจัยชิ้นที่ 2: แขนเทียม <span class="tag">Top Mantis Blade MT12</span></h3>
+                    <p>ต่อยอดความสำเร็จสู่ปีที่ 2 ผลงานวิจัยแขนเทียมอเนกประสงค์ที่เชื่อมต่อสัญญาณประสาทได้อย่างแม่นยำ พร้อมระบบคมมีดตั๊กแตนพับเก็บได้อย่างไร้รอยต่อ</p>
+                    <ul class="list-styled">
+                        <li><strong>คลิกเพื่อดูภาพโฮโลแกรม 3D</strong></li>
+                        <li>เชื่อมต่อประสาท EMG | คมมีด DLC ไร้สนิม</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <!-- TAB 3: CUSTOMERS -->
         <div id="customers" class="page-section">
             <div class="section-header">
@@ -1208,7 +1245,6 @@
             </div>
 
             <div class="grid-2" style="margin-bottom: 30px;">
-                <!-- สินค้าชิ้นที่ 1: ลูกตาเทียม -->
                 <div class="cyber-card" onclick="openHoloModal('Top E36 32x (Cybernetic Eye)', 'assets/eye.png', 'ฟังก์ชันหลัก: ซูมคมชัดเทียบเท่าเลนส์กล้อง 800mm, ระบบ Night Vision มองเห็นในที่มืด, Reality Scanner สแกนวัตถุแบบเรียลไทม์, Lens Disruptor ตัดการทำงานกล้องรอบตัว และ Picture Capture บันทึกภาพในความทรงจำดิจิทัล<br><br><strong>วัสดุที่ใช้:</strong> ไทเทเนียมอัลลอยด์เกรดการแพทย์, เลนส์แก้วออปติคอลนาโนโค้ท และมอเตอร์จิ๋ว Piezoelectric<br><strong>ต้นทุนการผลิต:</strong> ~350,000 – 500,000 บาท/ยูนิต')">
                     <h3>Top E36 32x <span class="tag">ลูกตาเทียมไซเบอร์เนติกส์</span></h3>
                     <p>ผลิตภัณฑ์ชิ้นแรกของบริษัท ออกแบบมาเพื่อทดแทนดวงตาที่สูญเสีย พร้อมเพิ่มขีดความสามารถในการมองเห็นเหนือมนุษย์</p>
@@ -1218,7 +1254,6 @@
                     </ul>
                 </div>
 
-                <!-- สินค้าชิ้นที่ 2: แขนเทียม -->
                 <div class="cyber-card" onclick="openHoloModal('Top Mantis Blade MT12 (Prosthetic Arm)', 'assets/arm.png', 'ฟังก์ชันหลัก: เชื่อมต่อสัญญาณประสาท (EMG Sensors) เคลื่อนไหวเป็นธรรมชาติ, ส่วนขยายคมมีดตั๊กแตนพับเก็บได้ ใช้ตัด หั่น อาหาร หรือกระดูกได้ทันทีโดยไร้สนิม และใช้เป็นอาวุธป้องกันตัวยามฉุกเฉิน<br><br><strong>วัสดุที่ใช้:</strong> คาร์บอนไฟเบอร์คอมโพสิต, อลูมิเนียมเกรดอากาศยาน และใบมีดเคลือบเพชรสังเคราะห์ (DLC)<br><strong>ต้นทุนการผลิต:</strong> ~220,000 – 290,000 บาท/ยูนิต')">
                     <h3>Top Mantis Blade MT12 <span class="tag">แขนเทียม + คมมีดตั๊กแตน</span></h3>
                     <p>ผลิตภัณฑ์ชิ้นที่สอง (ต่อยอดในปีที่ 2) สำหรับผู้พิการแขนขาด มาพร้อมฟังก์ชันอเนกประสงค์และระบบป้องกันตัว</p>
@@ -1229,7 +1264,6 @@
                 </div>
             </div>
 
-            <!-- สินค้าชิ้นที่ 3: ชิปชีวภาพ -->
             <div class="cyber-card" onclick="openHoloModal('Top RELIC Biochip', 'assets/chip.png', 'ชิปเชิงชีวภาพสำหรับจัดเก็บเอ็นแกรมของสมองมนุษย์ให้อยู่ในรูปแบบดิจิทัล เพื่อการเก็บบันทึกความทรงจำระยะยาวด้วยความปลอดภัยสูงสุด<br><br><strong>ฟังก์ชันหลัก:</strong> สำรองข้อมูลความทรงจำระยะยาว และเข้ารหัสควอนตัมป้องกันการเจาะระบบ')">
                 <h3>Top RELIC Biochip <span class="tag">ชิปชีวภาพความทรงจำ</span></h3>
                 <p>ชิปเชิงชีวภาพสำหรับจัดเก็บเอ็นแกรมของสมองมนุษย์ให้อยู่ในรูปแบบดิจิทัล เพื่อการเก็บบันทึกความทรงจำระยะยาวด้วยความปลอดภัยสูงสุด</p>
@@ -1248,8 +1282,7 @@
             </div>
 
             <div class="grid-3">
-                <!-- CEO -->
-                <div class="cyber-card" style="border-left: 6px solid var(--primary-red);" onclick="openMgmtModal('CEO', '(Chief Executive Officer)', 'The Black Eagle', 'assets/CEO.png', '<strong>หน้าที่หลักระดับองค์กร:</strong><br>• กำหนดวิสัยทัศน์ ยุทธศาสตร์ และทิศทางธุรกิจระยะยาวของ TOP Corporation ตลอดแผนงาน 2 ปี<br>• เป็นตัวแทนองค์กรในการเจรจกับกระทรวงสาธารณสุข หน่วยงานรัฐ และเครือข่ายโรงพยาบาลชั้นนำ<br>• อนุมัติงบประมาณและดีลพาร์ทเนอร์เชิงยุทธศาสตร์กับบริษัทประกันสุขภาพเอกชน<br><br><strong>ความสำคัญและบทบาทต่อโปรเจกต์งาน:</strong><br>• <strong>ต่อโปรเจกต์ Top E36 32x (ลูกตาเทียม):</strong> เป็นผู้ผลักดันนโยบายการเข้าถึงเทคโนโลยีของผู้ป่วย ผ่านการเจรจาร่วมกับกองทุนสวัสดิการรัฐและบริษัทประกัน เพื่ออนุมัติวงเงินคุ้มครองค่ารักษาอวัยวะเทียมราคาสูง<br>• <strong>ต่อโปรเจกต์ Top Mantis Blade MT12 (แขนเทียม):</strong> เจรจาจัดซื้อเชิงยุทธศาสตร์ร่วมกับกระทรวงกลาโหมและกองทัพ สำหรับนำร่องช่วยเหลือทหารผ่านศึกและหน่วยรบพิเศษที่สูญเสียอวัยวะ')">
+                <div class="cyber-card" style="border-left: 6px solid var(--primary-red);" onclick="openMgmtModal('CEO', '(Chief Executive Officer)', 'The Black Eagle', 'assets/ceo.png', '<strong>หน้าที่หลักระดับองค์กร:</strong><br>• กำหนดวิสัยทัศน์ ยุทธศาสตร์ และทิศทางธุรกิจระยะยาวของ TOP Corporation ตลอดแผนงาน 2 ปี<br>• เป็นตัวแทนองค์กรในการเจรจากับกระทรวงสาธารณสุข หน่วยงานรัฐ และเครือข่ายโรงพยาบาลชั้นนำ<br>• อนุมัติงบประมาณและดีลพาร์ทเนอร์เชิงยุทธศาสตร์กับบริษัทประกันสุขภาพเอกชน<br><br><strong>ความสำคัญและบทบาทต่อโปรเจกต์งาน:</strong><br>• <strong>ต่อโปรเจกต์ Top E36 32x (ลูกตาเทียม):</strong> เป็นผู้ผลักดันนโยบายการเข้าถึงเทคโนโลยีของผู้ป่วย ผ่านการเจรจาร่วมกับกองทุนสวัสดิการรัฐและบริษัทประกัน เพื่ออนุมัติวงเงินคุ้มครองค่ารักษาอวัยวะเทียมราคาสูง<br>• <strong>ต่อโปรเจกต์ Top Mantis Blade MT12 (แขนเทียม):</strong> เจรจาจัดซื้อเชิงยุทธศาสตร์ร่วมกับกระทรวงกลาโหมและกองทัพ สำหรับนำร่องช่วยเหลือทหารผ่านศึกและหน่วยรบพิเศษที่สูญเสียอวัยวะ')">
                     <h3>👑 ซีอีโอ (CEO) <span class="tag">The Black Eagle</span></h3>
                     <p><strong>ประธานเจ้าหน้าที่บริหาร</strong> ผู้กำหนดทิศทางและวิสัยทัศน์ขององค์กร</p>
                     <ul class="list-styled">
@@ -1258,8 +1291,7 @@
                     </ul>
                 </div>
 
-                <!-- COO -->
-                <div class="cyber-card" style="border-left: 6px solid var(--primary-red);" onclick="openMgmtModal('COO', '(Chief Operating Officer)', 'Chief Operations', 'assets/COO.gif', '<strong>หน้าที่หลักระดับองค์กร:</strong><br>• แปลงวิสัยทัศน์ของ CEO ให้เป็นแผนปฏิบัติการจริง ควบคุมงานวิจัยและพัฒนา (R&D Lab)<br>• ควบคุมกระบวนการผลิตต้นแบบ (Prototype) ห่วงโซ่อุปทาน (Supply Chain) และการควบคุมคุณภาพ (QC)<br>• บริหารจัดการไทม์ไลน์องค์กรตลอด 2 ปี และประสานงานอย่างไร้รอยต่อระหว่างทีมวิศวกรและแพทย์<br><br><strong>ความสำคัญและบทบาทต่อโปรเจกต์งาน:</strong><br>• <strong>ต่อโปรเจกต์ Top E36 32x (ลูกตาเทียม):</strong> เป็นหัวใจในการคุมไทม์ไลน์การพัฒนา ตั้งแต่ออกแบบสถาปัตยกรรมออปติคอลซูม 800mm, การสร้างต้นแบบในห้องทดลอง Cleanroom, จนถึงการทดสอบเชื่อมต่อสัญญาณประสาท<br>• <strong>ต่อโปรเจกต์ Top Mantis Blade MT12 (แขนเทียม):</strong> ควบคุมการประกอบโครงสร้างคาร์บอนไฟเบอร์คอมโพสิตและใบมีดเคลือบเพชรสังเคราะห์ (DLC) ให้ได้มาตรฐานการแพทย์สากลในปีที่ 2')">
+                <div class="cyber-card" style="border-left: 6px solid var(--primary-red);" onclick="openMgmtModal('COO', '(Chief Operating Officer)', 'Chief Operations', 'assets/coo.png', '<strong>หน้าที่หลักระดับองค์กร:</strong><br>• แปลงวิสัยทัศน์ของ CEO ให้เป็นแผนปฏิบัติการจริง ควบคุมงานวิจัยและพัฒนา (R&D Lab)<br>• ควบคุมกระบวนการผลิตต้นแบบ (Prototype) ห่วงโซ่อุปทาน (Supply Chain) และการควบคุมคุณภาพ (QC)<br>• บริหารจัดการไทม์ไลน์องค์กรตลอด 2 ปี และประสานงานอย่างไร้รอยต่อระหว่างทีมวิศวกรและแพทย์<br><br><strong>ความสำคัญและบทบาทต่อโปรเจกต์งาน:</strong><br>• <strong>ต่อโปรเจกต์ Top E36 32x (ลูกตาเทียม):</strong> เป็นหัวใจในการคุมไทม์ไลน์การพัฒนา ตั้งแต่ออกแบบสถาปัตยกรรมออปติคอลซูม 800mm, การสร้างต้นแบบในห้องทดลอง Cleanroom, จนถึงการทดสอบเชื่อมต่อสัญญาณประสาท<br>• <strong>ต่อโปรเจกต์ Top Mantis Blade MT12 (แขนเทียม):</strong> ควบคุมการประกอบโครงสร้างคาร์บอนไฟเบอร์คอมโพสิตและใบมีดเคลือบเพชรสังเคราะห์ (DLC) ให้ได้มาตรฐานการแพทย์สากลในปีที่ 2')">
                     <h3>⚙️ ประธานฝ่ายปฏิบัติการ <span class="tag">COO</span></h3>
                     <p>ควบคุม R&D, ห้องทดลอง, โรงงานต้นแบบ และไทม์ไลน์ 2 ปี</p>
                     <ul class="list-styled">
@@ -1268,8 +1300,7 @@
                     </ul>
                 </div>
 
-                <!-- CFO -->
-                <div class="cyber-card" onclick="openMgmtModal('CFO', '(Chief Financial Officer)', 'Chief Finance', 'assets/CFO.png', '<strong>หน้าที่หลักระดับองค์กร:</strong><br>• บริหารจัดการและควบคุมทุนจดทะเบียนเริ่มต้น 20 ล้านบาทอย่างมีประสิทธิภาพสูงสุด<br>• จัดทำงบประมาณรายไตรมาส ควบคุมต้นทุนการผลิต และป้องกันความเสี่ยงทางการเงินของบริษัท<br>• วางแผนกระแสเงินสดและการระดมทุนในอนาคต<br><br><strong>ความสำคัญและบทบาทต่อโปรเจกต์งาน:</strong><br>• <strong>ต่อโปรเจกต์ Top E36 32x (ลูกตาเทียม):</strong> จัดสรรงบก้อนสำคัญ 4.5 ล้านบาทสำหรับงาน R&D และคุมงบทำ Engineering Prototype ในปีแรกอย่างเข้มงวด ห้ามใช้เงินเกินตัวก่อนผ่านการทดสอบ<br>• <strong>ต่อโปรเจกต์ Top Mantis Blade MT12 (แขนเทียม):</strong> วางแผนกระจายกระแสเงินสดจากกำไรการจำหน่ายลูกตาเทียมล็อตแรก (Pilot Batch) มา Reinvest พัฒนาแขนเทียม และเตรียมแผนระดมทุน Series A ในปีที่ 2')">
+                <div class="cyber-card" onclick="openMgmtModal('CFO', '(Chief Financial Officer)', 'Chief Finance', 'assets/cfo.png', '<strong>หน้าที่หลักระดับองค์กร:</strong><br>• บริหารจัดการและควบคุมทุนจดทะเบียนเริ่มต้น 20 ล้านบาทอย่างมีประสิทธิภาพสูงสุด<br>• จัดทำงบประมาณรายไตรมาส ควบคุมต้นทุนการผลิต และป้องกันความเสี่ยงทางการเงินของบริษัท<br>• วางแผนกระแสเงินสดและการระดมทุนในอนาคต<br><br><strong>ความสำคัญและบทบาทต่อโปรเจกต์งาน:</strong><br>• <strong>ต่อโปรเจกต์ Top E36 32x (ลูกตาเทียม):</strong> จัดสรรงบก้อนสำคัญ 4.5 ล้านบาทสำหรับงาน R&D และคุมงบทำ Engineering Prototype ในปีแรกอย่างเข้มงวด ห้ามใช้เงินเกินตัวก่อนผ่านการทดสอบ<br>• <strong>ต่อโปรเจกต์ Top Mantis Blade MT12 (แขนเทียม):</strong> วางแผนกระจายกระแสเงินสดจากกำไรการจำหน่ายลูกตาเทียมล็อตแรก (Pilot Batch) มา Reinvest พัฒนาแขนเทียม และเตรียมแผนระดมทุน Series A ในปีที่ 2')">
                     <h3>💰 ประธานฝ่ายการเงิน <span class="tag">CFO</span></h3>
                     <p>ดูแลทุน 20 ล้านบาท จัดทำงบประมาณ และควบคุมความเสี่ยงการลงทุน</p>
                     <ul class="list-styled">
@@ -1278,8 +1309,7 @@
                     </ul>
                 </div>
 
-                <!-- CSO -->
-                <div class="cyber-card" onclick="openMgmtModal('CSO', '(Chief Security Officer)', 'The Shadow Walker', 'assets/CSO.png', '<strong>หน้าที่หลักระดับองค์กร:</strong><br>• วางระบบรักษาความปลอดภัยทั้งภายในองค์กรและทรัพย์สินทางปัญญา<br>• ควบคุมมาตรฐานความปลอดภัยทางไซเบอร์ (Cybersecurity) ของผลิตภัณฑ์ให้อยู่ในระดับสูงสุดตามข้อกำหนด FDA<br>• ป้องกันการโจมตีทางดิจิทัลและการรั่วไหลของข้อมูลชีวมิติผู้ใช้งาน<br><br><strong>ความสำคัญและบทบาทต่อโปรเจกต์งาน:</strong><br>• <strong>ต่อโปรเจกต์ Top E36 32x (ลูกตาเทียม):</strong> ออกแบบระบบเข้ารหัสควอนตัมและการยืนยันตัวตน ป้องกันไม่ให้แฮกเกอร์เจาะระบบเข้ามาควบคุมการมองเห็นหรือดักจับข้อมูลภาพที่บันทึกไว้<br>• <strong>ต่อโปรเจกต์ Top Mantis Blade MT12 (แขนเทียม):</strong> ตรวจสอบความปลอดภัยของเฟิร์มแวร์เซ็นเซอร์ตรวจจับสัญญาณประสาท (EMG Sensors) และระบบควบคุมใบมีดตั๊กแตน เพื่อป้องกันความผิดพลาดทางคำสั่งกลศาสตร์ที่อาจเป็นอันตรายต่อผู้ใช้งาน')">
+                <div class="cyber-card" onclick="openMgmtModal('CSO', '(Chief Security Officer)', 'The Shadow Walker', 'assets/cso.png', '<strong>หน้าที่หลักระดับองค์กร:</strong><br>• วางระบบรักษาความปลอดภัยทั้งภายในองค์กรและทรัพย์สินทางปัญญา<br>• ควบคุมมาตรฐานความปลอดภัยทางไซเบอร์ (Cybersecurity) ของผลิตภัณฑ์ให้อยู่ในระดับสูงสุดตามข้อกำหนด FDA<br>• ป้องกันการโจมตีทางดิจิทัลและการรั่วไหลของข้อมูลชีวมิติผู้ใช้งาน<br><br><strong>ความสำคัญและบทบาทต่อโปรเจกต์งาน:</strong><br>• <strong>ต่อโปรเจกต์ Top E36 32x (ลูกตาเทียม):</strong> ออกแบบระบบเข้ารหัสควอนตัมและการยืนยันตัวตน ป้องกันไม่ให้แฮกเกอร์เจาะระบบเข้ามาควบคุมการมองเห็นหรือดักจับข้อมูลภาพที่บันทึกไว้<br>• <strong>ต่อโปรเจกต์ Top Mantis Blade MT12 (แขนเทียม):</strong> ตรวจสอบความปลอดภัยของเฟิร์มแวร์เซ็นเซอร์ตรวจจับสัญญาณประสาท (EMG Sensors) และระบบควบคุมใบมีดตั๊กแตน เพื่อป้องกันความผิดพลาดทางคำสั่งกลศาสตร์ที่อาจเป็นอันตรายต่อผู้ใช้งาน')">
                     <h3>🛡️ ประธานฝ่ายความปลอดภัย <span class="tag">CSO</span></h3>
                     <p>ดูแลความปลอดภัยองค์กรและ Cybersecurity ของอุปกรณ์ไซเบอร์เนติกส์</p>
                     <ul class="list-styled">
@@ -1288,8 +1318,7 @@
                     </ul>
                 </div>
 
-                <!-- HR Head -->
-                <div class="cyber-card" onclick="openMgmtModal('HR HEAD', '(Head of Human Resources)', 'The Fast', 'assets/HR.png', '<strong>หน้าที่หลักระดับองค์กร:</strong><br>• บริหารทรัพยากรบุคคลและสรรหาบุคลากรผู้เชี่ยวชาญระดับสูงเข้าสู่องค์กร<br>• ดูแลสวัสดิการ กฎหมายแรงงาน และสร้างวัฒนธรรมองค์กรที่ขับเคลื่อนด้วยนวัตกรรม<br>• ส่งเสริมการทำงานร่วมกันระหว่างทีมแพทย์และทีมวิศวกร<br><br><strong>ความสำคัญและบทบาทต่อโปรเจกต์งาน:</strong><br>• <strong>ต่อโปรเจกต์ Top E36 32x (ลูกตาเทียม):</strong> เป็นผู้สรรหาทีมงานเฉพาะทาง เช่น วิศวกรออปติคอล (Optical Engineer), วิศวกรซอฟต์แวร์ประมวลผลภาพ และจักษุแพทย์ผู้เชี่ยวชาญมาประจำการใน Lab<br>• <strong>ต่อโปรเจกต์ Top Mantis Blade MT12 (แขนเทียม):</strong> สรรหาวิศวกรชีวการแพทย์ (Biomedical Engineer) และผู้เชี่ยวชาญด้านวัสดุศาสตร์คอมโพสิต เพื่อเร่งพัฒนาโปรเจกต์ในขวบปีที่สองให้สำเร็จตามเป้าหมาย')">
+                <div class="cyber-card" onclick="openMgmtModal('HR HEAD', '(Head of Human Resources)', 'The Fast', 'assets/hr.png', '<strong>หน้าที่หลักระดับองค์กร:</strong><br>• บริหารทรัพยากรบุคคลและสรรหาบุคลากรผู้เชี่ยวชาญระดับสูงเข้าสู่องค์กร<br>• ดูแลสวัสดิการ กฎหมายแรงงาน และสร้างวัฒนธรรมองค์กรที่ขับเคลื่อนด้วยนวัตกรรม<br>• ส่งเสริมการทำงานร่วมกันระหว่างทีมแพทย์และทีมวิศวกร<br><br><strong>ความสำคัญและบทบาทต่อโปรเจกต์งาน:</strong><br>• <strong>ต่อโปรเจกต์ Top E36 32x (ลูกตาเทียม):</strong> เป็นผู้สรรหาทีมงานเฉพาะทาง เช่น วิศวกรออปติคอล (Optical Engineer), วิศวกรซอฟต์แวร์ประมวลผลภาพ และจักษุแพทย์ผู้เชี่ยวชาญมาประจำการใน Lab<br>• <strong>ต่อโปรเจกต์ Top Mantis Blade MT12 (แขนเทียม):</strong> สรรหาวิศวกรชีวการแพทย์ (Biomedical Engineer) และผู้เชี่ยวชาญด้านวัสดุศาสตร์คอมโพสิต เพื่อเร่งพัฒนาโปรเจกต์ในขวบปีที่สองให้สำเร็จตามเป้าหมาย')">
                     <h3>👥 หัวหน้าฝ่ายบุคคล <span class="tag">HR Head</span></h3>
                     <p>สร้างและบริหารทีมงานสหสาขา จัดหาบุคลากรเฉพาะทางเข้าห้องปฏิบัติการ</p>
                     <ul class="list-styled">
@@ -1300,7 +1329,7 @@
             </div>
         </div>
 
-        <!-- TAB 6: BUDGET & ROADMAP -->
+        <!-- TAB 6: BUDGET & ROADMAP (เพิ่มหัวข้อความเสี่ยงและวิธีแก้ไข) -->
         <div id="budget" class="page-section">
             <div class="section-header">
                 <h2>แผนงานและงบประมาณ 20 ล้านบาท (Budget & 2-Year Roadmap)</h2>
@@ -1455,9 +1484,20 @@
                 </div>
             </div>
 
+            <!-- เพิ่มหัวข้อความเสี่ยงและวิธีแก้ไขปัญหา -->
+            <div class="cyber-card" style="margin-bottom: 30px; border-left: 6px solid var(--primary-red);">
+                <h3>⚠️ การประเมินความเสี่ยงและแนวทางแก้ไข (Risk Assessment & Mitigation)</h3>
+                <p>การดำเนินโครงการอวัยวะเทียมไซเบอร์เนติกส์มีความท้าทายสูง คณะผู้บริหารได้วิเคราะห์ความเสี่ยงสำคัญและเตรียมแผนรองรับไว้ดังนี้:</p>
+                <ul class="list-styled">
+                    <li><strong>ความเสี่ยงด้านงบประมาณบานปลาย (Budget Overrun):</strong> การวิจัย R&D อาจใช้ต้นทุนสูงกว่าที่คาดการณ์ <br>→ <em>วิธีแก้ไข:</em> โดย CFO ควบคุมงบแบบรายไตรมาส และกันเงินสำรองฉุกเฉินไว้ 2 ล้านบาท รวมถึงเน้นพัฒนา Prototype ในห้องแล็บให้เสร็จก่อนผลิตจริง</li>
+                    <li><strong>ความเสี่ยงด้านการผ่านรับรองมาตรฐาน อย. (FDA Approval Delay):</strong> อุปกรณ์การแพทย์ต้องใช้เวลาตรวจสอบความปลอดภัยนาน <br>→ <em>วิธีแก้ไข:</em> โดย CSO และทีม Regulatory ทำงานร่วมกับที่ปรึกษาทางการแพทย์ตั้งแต่เดือนแรก เพื่อส่งตรวจทดสอบทางคลินิกแบบคู่ขนาน</li>
+                    <li><strong>ความเสี่ยงด้านความปลอดภัยทางไซเบอร์ (Cybersecurity Vulnerability):</strong> อุปกรณ์เชื่อมต่อภายนอกอาจถูกเจาะระบบ <br>→ <em>วิธีแก้ไข:</em> โดย CSO วางระบบเข้ารหัสควอนตัมและจำลองภัยคุกคาม (Penetration Testing) ตั้งแต่ขั้นตอนออกแบบสถาปัตยกรรม</li>
+                </ul>
+            </div>
+
             <div class="grid-2" style="margin-bottom: 30px;">
                 <div class="cyber-card">
-                    <h3>2. ผลลัพธ์และกระแสเงินสดใน 1 ปีแรก (Year 1)</h3>
+                    <h3>ผลลัพธ์และกระแสเงินสดใน 1 ปีแรก (Year 1)</h3>
                     <ul class="list-styled">
                         <li><strong>ผลงานสำเร็จ:</strong> พัฒนาและสร้าง "ลูกตาเทียมไซเบอร์เนติกส์ (Top E36 32x)" สำเร็จจนได้รุ่น Engineering Prototype พร้อมผ่านการทดสอบความปลอดภัยทางคลินิก</li>
                         <li><strong>กลุ่มลูกค้าผู้ซื้อล็อตแรก:</strong> โรงพยาบาลพาร์ทเนอร์, หน่วยงานกองทัพ/ทหารผ่านศึก, และผู้ป่วยผ่านเครือข่ายเงินสนับสนุนบริษัทประกันสุขภาพ</li>
@@ -1466,7 +1506,7 @@
                 </div>
 
                 <div class="cyber-card">
-                    <h3>3. การต่อยอดงบประมาณและภาพรวม 2 ปี (Year 2)</h3>
+                    <h3>การต่อยอดงบประมาณและภาพรวม 2 ปี (Year 2)</h3>
                     <ul class="list-styled">
                         <li><strong>การ Reinvest งบประมาณ:</strong> นำรายได้และกำไรจากปีแรกไปต่อยอดโปรเจกต์สินค้าชิ้นที่สอง **"แขนเทียมพร้อมคมมีดตั๊กแตน (Top Mantis Blade MT12)"** สำหรับผู้พิการและป้องกันตัว</li>
                         <li><strong>กลยุทธ์การเติบโต:</strong> ปีที่ 1 เน้น R&D + Prototype + Certification ลูกตาเทียม / ปีที่ 2 ขยายไลน์ผลิตภัณฑ์แขนเทียมไซเบอร์เนติกส์และเตรียมระดมทุนรอบใหม่ (Series A) เพื่อสร้างโรงงานผลิตขนาดใหญ่</li>
@@ -1490,7 +1530,7 @@
             });
 
             const bgm = document.getElementById('bgm-audio');
-            bgm.volume = 0.1; // เริ่มต้นที่ 10% ตามค่าสไลเดอร์
+            bgm.volume = 0.1; 
             bgm.play().catch(error => {
                 console.log("BGM play blocked by browser policy:", error);
             });
@@ -1508,14 +1548,12 @@
             }, 2000);
         }
 
-        // ฟังก์ชันปรับระดับเสียง BGM แบบสไลเดอร์ 0-100%
         function changeBGMVolume(val) {
             const bgm = document.getElementById('bgm-audio');
             bgm.volume = val / 100;
             document.getElementById('volume-percent').innerText = val + '%';
         }
 
-        // ฟังก์ชันสำหรับหน้าสินค้า (Product Modal เดิม)
         function openHoloModal(title, imgSrc, desc) {
             document.getElementById('holo-product-title').innerText = title;
             document.getElementById('holo-product-img').src = imgSrc;
@@ -1527,7 +1565,6 @@
             document.getElementById('holo-modal').classList.remove('active');
         }
 
-        // ฟังก์ชันสำหรับหน้าผู้บริหาร (Management 2-Column Modal: ซ้ายรูปใหญ่ - ขวาข้อมูลแน่น)
         function openMgmtModal(title, subtitle, nickname, imgSrc, desc) {
             document.getElementById('mgmt-modal-title').innerText = title;
             document.getElementById('mgmt-modal-subtitle').innerText = subtitle + " | " + nickname;
